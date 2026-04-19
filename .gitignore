@@ -66,3 +66,6 @@ coverage/
 
 # TypeScript specific  
 *.d.ts.map
+
+# Fontfiles 
+src/styles/fonts/
