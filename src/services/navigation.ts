@@ -1,5 +1,9 @@
+document.getElementById('start-settings')?.addEventListener('click', () => {
+   startSettings();
+});
+
 function startSettings() {
-    window.location.href = 'settings.html';
+ window.location.href = 'settings.html';
 }
 
 function startGame() {
