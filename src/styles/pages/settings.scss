@@ -1,0 +1,28 @@
+@use '../abstract/mixin' as mixin;
+
+body {
+    overflow: hidden;
+    height: 100vh;
+    @include mixin.flex-center;
+}
+
+.settings {
+    width: 80%;
+    margin: 0 auto;
+    @include mixin.flex-column;
+    gap: 40px;
+
+    & .title {
+        @include mixin.flex-column;
+
+        & h1 {
+            font-family: Red-Rose-Bold;
+            font-size: 54px;
+            margin-left: 20px;
+            line-height: 0.8;
+        }
+        & svg {
+            width: 100%;
+        }
+    }
+}
