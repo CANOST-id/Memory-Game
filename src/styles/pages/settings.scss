@@ -1,19 +1,15 @@
 @use '../abstract/mixin' as mixin;
 
-body {
-    overflow: hidden;
-    height: 100vh;
-    @include mixin.flex-center;
-}
-
 .settings {
-    width: 80%;
+    height: 100vh;
+    width: 100%;
+    max-width: 1440px;
     margin: 0 auto;
-    @include mixin.flex-column;
-    gap: 40px;
+    @include mixin.flex(column, center, space-between);
+    gap: 54px;
 
-    & .title {
-        @include mixin.flex-column;
+    .title {
+        @include mixin.flex(column, flex-start, flex-start);
 
         & h1 {
             font-family: Red-Rose-Bold;
@@ -21,8 +17,47 @@ body {
             margin-left: 20px;
             line-height: 0.8;
         }
-        & svg {
-            width: 100%;
+    }
+}
+
+.settings-content {
+    @include mixin.flex(row, space-between, flex-start);
+}
+
+.settings-menu {
+    @include mixin.flex(column, center, flex-start);
+    gap: 54px;
+
+    & .choose-player,
+    & .theme-options,
+    & .board-size {
+        @include mixin.flex(column, flex-start, flex-start);
+        gap: 10px;
+
+        & .title__wrapper {
+            display: flex;
+            gap: 8px;
+
+            & h2 {
+                font-family: Red-Rose-Bold;
+                font-size: 24px;
+            }
+        }
+
+        & div {
+            @include mixin.flex(row, flex-start, center);
+            gap: 8px;
+
+            & input[type="radio"] {
+                margin-left: 40px;
+                width: 20px;
+                height: 20px;
+            }
+
+            & label {
+                font-family: Red-Rose-Regular;
+                font-size: 18px;
+            }
         }
     }
 }
