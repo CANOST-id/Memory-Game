@@ -61,3 +61,13 @@
         }
     }
 }
+
+.settings-preview {
+    @include mixin.flex(column, center, end);
+    gap: 42px;
+
+    & .preview__box {
+        @include mixin.flex(row, center, center);
+        gap: 16px;
+    }
+}
