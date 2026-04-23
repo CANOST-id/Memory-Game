@@ -41,7 +41,7 @@
                         <h2>Choose player</h2>
                     </div>
                     <div>
-                        <input type="radio" name="player" value="player1" id="player1" checked>
+                        <input type="radio" name="player" value="player1" id="player1">
                         <label for="player1">Player 1</label>
                     </div>
                     <div>
@@ -56,7 +56,7 @@
                         <h2>Board size</h2>
                     </div>
                     <div>
-                        <input type="radio" name="board-size" value="16 cards" id="16-cards" checked>
+                        <input type="radio" name="board-size" value="16 cards" id="16-cards">
                         <label for="16-cards">16 Cards</label>
                     </div>
 
@@ -78,8 +78,23 @@
                         class="code-vibes-preview">
                 </div>
 
-                <div class="preview-box">
+                <div class="preview__box">
+                    <p>Game theme</p>
+                    <div class="hr__wrapper">
+                        <div class="hr__face"></div>
+                        <div class="hr__face hr__face--back"></div>
+                    </div>
+                    <p>Player</p>
+                    <div class="hr__wrapper">
+                        <hr class="hr__face">
+                        <hr class="hr__face hr__face--back">
+                    </div>
+                    <p>Board size</p>
 
+                    <button class="start">
+                        <img src="./src/assets/icons/smart_display.png" alt="play icon">
+                        Start
+                    </button>
                 </div>
             </div>
         </section>
