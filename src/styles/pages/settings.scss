@@ -66,10 +66,41 @@
                     box-shadow: inset 0 0 0 5px white;
                     background-color: vars.$primary-dark;
                 }
+
+                &:checked+label {
+                    font-weight: bold;
+                    position: relative;
+
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        right: -65px;
+                        top: 0;
+                        border: 6px solid vars.$primary-yellow;
+                        transform: rotate(45deg) translateY(70%);
+                        z-index: 1;
+                    }
+
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        right: -55px;
+                        width: 41px;
+                        border: 2px solid vars.$primary-yellow;
+                        transform: translateY(250%);
+                    }
+                }
+
+                &:checked+label::after {
+                    content: '';
+                    margin-left: 8px;
+                    font-size: 18px;
+                }
             }
 
             & label {
                 font-size: 20px;
+                cursor: pointer;
             }
         }
     }
@@ -114,6 +145,14 @@
             border: none;
             cursor: pointer;
             gap: 8px;
+
+            &:hover {
+                transform: scale(1.07);
+                & img {
+                    transition: all 0.1s ease;
+                    transform: rotate(-5deg);
+                }
+            }
         }
     }
 }
