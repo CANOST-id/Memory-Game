@@ -25,11 +25,11 @@
                         <h2>Game themes</h2>
                     </div>
                     <div>
-                        <input type="radio" name="theme" value="code-vibes" id="code-vibes" checked>
+                        <input type="radio" name="theme" value="Code vibes theme" id="code-vibes">
                         <label for="code-vibes">Code vibes theme</label>
                     </div>
                     <div>
-                        <input type="radio" name="theme" value="gaming" id="gaming">
+                        <input type="radio" name="theme" value="Gaming theme" id="gaming">
                         <label for="gaming">Gaming theme</label>
                     </div>
                 </div>
@@ -40,12 +40,12 @@
                         <h2>Choose player</h2>
                     </div>
                     <div>
-                        <input type="radio" name="player" value="player1" id="player1">
-                        <label for="player1">Orange</label>
+                        <input type="radio" name="player" value="Orange" id="orange">
+                        <label for="orange">Orange</label>
                     </div>
                     <div>
-                        <input type="radio" name="player" value="player2" id="player2">
-                        <label for="player2">Blue</label>
+                        <input type="radio" name="player" value="Blue" id="blue">
+                        <label for="blue">Blue</label>
                     </div>
                 </div>
 
@@ -55,17 +55,17 @@
                         <h2>Board size</h2>
                     </div>
                     <div>
-                        <input type="radio" name="board-size" value="16 cards" id="16-cards">
+                        <input type="radio" name="board-size" value="16 Cards" id="16-cards" data-size="16">
                         <label for="16-cards">16 Cards</label>
                     </div>
 
                     <div>
-                        <input type="radio" name="board-size" value="24 cards" id="24-cards">
+                        <input type="radio" name="board-size" value="24 Cards" id="24-cards" data-size="24">
                         <label for="24-cards">24 Cards</label>
                     </div>
 
                     <div>
-                        <input type="radio" name="board-size" value="36 Cards" id="36-cards">
+                        <input type="radio" name="board-size" value="36 Cards" id="36-cards" data-size="36">
                         <label for="36-cards">36 Cards</label>
                     </div>
                 </div>
@@ -77,15 +77,15 @@
 
                 <div class="settings-preview__box">
                     <div class="settings-preview__box--options">
-                        <p>Game theme</p>
+                        <p id="choosen_theme">Game theme</p>
 
                         <hr>
 
-                        <p>Player</p>
+                        <p id="choosen_player">Player</p>
 
                         <hr>
 
-                        <p>Board size</p>
+                        <p id="choosen_board_size">Board size</p>
                     </div>
 
 
