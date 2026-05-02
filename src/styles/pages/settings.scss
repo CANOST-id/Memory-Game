@@ -138,21 +138,29 @@
         & .start__button {
             @include mixin.flex(row, center, center);
             color: vars.$primary-dark;
-            background-color: vars.$primary-yellow;
+            background-color: #DBDBD6;
             font-family: Red-Rose-Bold;
             font-size: 20px;
             padding: 14px 20px;
             border: none;
-            cursor: pointer;
+            cursor: not-allowed;
             gap: 8px;
 
-            &:hover {
-                transform: scale(1.07);
-                & img {
-                    transition: all 0.1s ease;
-                    transform: rotate(-5deg);
-                }
-            }
+
+        }
+    }
+}
+
+.enabled {
+    cursor: pointer !important;
+    background-color: vars.$primary-yellow !important;
+
+    &:hover {
+        transform: scale(1.07);
+
+        & img {
+            transition: all 0.1s ease;
+            transform: rotate(-5deg);
         }
     }
 }

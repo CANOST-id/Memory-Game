@@ -1,9 +1,11 @@
-// settings.ts - handles the settings page of the memory game
+import { startGame } from '../services/navigation';
 export interface Settings {
     theme: string;
     player: string;
     boardSize: number | string;
 }
+
+let activeButton = false;
 
 // check if DOM is loaded before initializing the settings page
 if (document.readyState === 'loading') {
@@ -12,12 +14,17 @@ if (document.readyState === 'loading') {
     initSettings();
 }
 
-// init function to add event listeners to all radio buttons
+// init function to add event listeners to all radio buttons and update start button state
 function initSettings() {
     const allRadioButtons = document.querySelectorAll('input[type="radio"]');
 
+    updateStartButtonState();
+
     allRadioButtons.forEach(radio => {
-        radio.addEventListener('change', () => updatePreview(getCurrentSettings()));
+        radio.addEventListener('change', () => {
+            updatePreview(getCurrentSettings());
+            updateStartButtonState();
+        });
     })
 }
 
@@ -69,3 +76,39 @@ function switchPreviewImage() {
         themeImage.alt = 'gaming theme preview';
     }
 }
+
+// update the state of start button - required function
+function updateStartButtonState() {
+    const startButton = document.getElementById('start-game') as HTMLButtonElement;
+    const themeSelected = document.querySelector('input[name="theme"]:checked') as HTMLInputElement;
+    const playerSelected = document.querySelector('input[name="player"]:checked') as HTMLInputElement;
+    const boardSizeSelected = document.querySelector('input[name="board-size"]:checked') as HTMLInputElement;
+    const allSelected = themeSelected && playerSelected && boardSizeSelected;
+    if (startButton) {
+        startButton.disabled = !allSelected;
+    } if (allSelected) {
+        startButton.classList.add('enabled');
+        activeButton = true;
+    } else {
+        startButton.classList.remove('enabled');
+        activeButton = false;
+    }
+}
+
+// save the current settings to localStorage for later use in the game page
+function saveSettings() {
+    const settingsValues = getCurrentSettings();
+    localStorage.setItem('settings', JSON.stringify(settingsValues));
+}
+
+// event listiner for the start game button
+document.getElementById('start-game')?.addEventListener('click', (event) => {
+    if (activeButton === true) {
+        saveSettings();
+        startGame();
+    }
+    else {
+        event.preventDefault();
+        return false;
+    }
+})
