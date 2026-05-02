@@ -2,22 +2,18 @@ document.getElementById('start-settings')?.addEventListener('click', () => {
    startSettings();
 });
 
-document.getElementById('start-game')?.addEventListener('click', () => {
-    startGame();
-});
-
 function startSettings() {
  window.location.href = 'settings.html';
 }
 
-function startGame() {
+export function startGame() {
     window.location.href = 'game.html';
 }
 
-function gameOver() {
+export function gameOver() {
     window.location.href = 'game-over.html';
 }
 
-function gameEnd() {
+export function gameEnd() {
     window.location.href = 'game-end.html';
 }
