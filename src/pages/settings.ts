@@ -7,26 +7,19 @@ export interface Settings {
 
 let activeButton = false;
 
+// check if page is loaded to handle start button state when user navigates back to the settings page from the game page
+window.addEventListener('pageshow', updateStartButtonState);
+
 // check if DOM is loaded before initializing the settings page
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initSettings);
-} else {
-    initSettings();
-}
-
-// init function to add event listeners to all radio buttons and update start button state
-function initSettings() {
+document.addEventListener('DOMContentLoaded', () => {
     const allRadioButtons = document.querySelectorAll('input[type="radio"]');
-
-    updateStartButtonState();
-
     allRadioButtons.forEach(radio => {
         radio.addEventListener('change', () => {
             updatePreview(getCurrentSettings());
             updateStartButtonState();
         });
-    })
-}
+    });
+});
 
 // get current settings from the DOM and return them as an object
 export function getCurrentSettings(): Settings {
@@ -90,7 +83,6 @@ function updateStartButtonState() {
         startButton.classList.add('enabled');
         activeButton = true;
     } else {
-        startButton.classList.remove('enabled');
         activeButton = false;
     }
 }
