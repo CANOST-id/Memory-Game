@@ -1,6 +1,14 @@
+// basic styles for the whole app
 @import url("./base/base.scss");
 @import url("./base/font.scss");
+
+// opening style 
 @import url("./pages/opening.scss");
+
+// settings style
 @import url("./pages/settings.scss");
+
+// game style including themes
+@import url("./pages/game.scss");
 @import url("./themes/__code-vibes.scss");
 @import url("./themes/__games-theme.scss");
