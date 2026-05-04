@@ -1,2 +1,59 @@
-$primary-yellow: #F0EA6E;
-$primary-dark: #303131;
+// main colors
+$primary-yellow: rgb(240, 234, 110);
+$primary-dark: rgb(48, 49, 49);
+
+// code vibes theme colors
+// main colors
+$cv-blue: rgb(43, 177, 255);
+$cv-orange: rgb(245, 142, 57);
+$cv-light-green: rgb(77, 213, 188);
+$cv-dark-green: rgb(40, 111, 98);
+
+// exit button colors
+$cv-exit-btn-bg: rgba(134, 233, 214, 0.14);
+$cv-exit-btn-hover-bg: rgba(134, 233, 214, 0.26);
+$cv-exit-btn-border: 2px solid rgba(77, 213, 188, 1);
+$cv-exit-btn-hover-border: 3px solid rgba(77, 213, 188, 1);
+$cv-exit-btn-hover-shadow: 4px 4px 6px 0px rgba(77, 213, 188, 0.2);
+
+// pop-up button colors
+$cv-popup-btn-bg: rgba(102, 207, 188, 1);
+$cv-popup-btn-hover-bg: rgba(102, 207, 188, 0.7);
+$cv-popup-btn-hover-border: 3px solid rgba(58, 188, 164, 1);
+
+// card colors
+$cv-card-front-bg: rgba(232, 243, 240, 1);
+$cv-card-back-bg: linear-gradient(212.26deg, $cv-light-green, $cv-dark-green);
+$cv-card-state-border: 5px solid rgba(77, 213, 188, 1);
+$cv-card-state-shadow: 6px 6px 8px 0px rgba(77, 213, 188, 0.3);
+
+
+// game theme
+// game theme main colors
+$gt-bg: rgba(41, 79, 96, 1);
+$gt-orange: rgba(234, 105, 0, 1);
+$gt-blue: rgba(9, 127, 197, 1);
+$gt-dark-blue: rgba(10, 40, 53, 1);
+$gt-pink: rgba(237, 27, 118, 1);
+
+// game theme header colors
+$gt-header-bg: rgba(253, 150, 201, 0.2);
+
+// game theme exit button colors
+$gt-exit-btn-bg: rgba(237, 27, 118, 0.08);
+$gt-exit-btn-hover-bg: rgba(237, 27, 118, 0.14);
+$gt-exit-btn-border: 2px solid rgba(231, 28, 79, 1);
+$gt-exit-btn-hover-border: 3px solid rgba(231, 28, 79, 1);
+$gt-exit-btn-hover-shadow: 3px 3px 5px 0px rgba(47, 46, 46, 0.2);
+
+// game theme pop-up button colors
+$gt-popup-btn-bg: rgba(237, 27, 118, 1);
+$gt-popup-btn-hover-bg: rgba(242, 199, 218, 0.08);
+$gt-popup-btn-hover-border: 2px solid rgba(231, 28, 79, 1);
+$gt-popup-btn-hover-font-color: rgba(237, 27, 118, 1);
+$gt-popup-btn-hover-shadow: 3px 3px 5px 0px rgba(47, 46, 46, 0.2);
+
+// game theme card colors
+$gt-card-front-bg: rgba(246, 241, 243, 1);
+$gt-card-back-bg: linear-gradient(147.13deg, $gt-pink, $gt-dark-blue);
+$gt-card-shadow: 6px 6px 12px 0px rgba(0, 0, 0, 0.25);
