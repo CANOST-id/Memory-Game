@@ -8,34 +8,41 @@
 </head>
 
 <body>
-    <header>
-        <section class="standings">
-            <div class="standings__blue">
+    <section class="game">
+        <header>
+            <section class="standings">
+                <div class="standings__blue">
+                    <div class="--label"></div>
+                    <p>Blue</p>
+                    <div class="--score">0</div>
+                </div>
+                <div class="standings__orange">
+                    <div class="--label"></div>
+                    <p>Orange</p>
+                    <div class="--score">0</div>
+                </div>
+            </section>
 
+            <section class="current-player">
+                <p>Current Player: </p>
+                <div class="current-player__indicator"></div>
+            </section>
+
+            <button id="exit-game">Exit Game</button>
+
+        </header>
+
+
+        <section class="game__table"></section>
+
+        <dialog>
+            <h2></h2>
+            <div class="dialog__wrapper">
+                <button id="back-to-game">Back to game</button>
+                <button id="exit-game-dialog">Exit game</button>
             </div>
-            <div class="standings__orange">
-
-            </div>
-        </section>
-
-        <section class="current-player">
-            <p>Current Player: </p>
-        </section>
-
-        <button id="exit-game">Exit Game</button>
-
-    </header>
-
-
-    <section class="game__table"></section>
-
-    <dialog>
-        <h2></h2>
-        <div class="dialog__wrapper">
-            <button id="back-to-game">Back to game</button>
-            <button id="exit-game-dialog">Exit game</button>
-        </div>
-    </dialog>
+        </dialog>
+    </section>
 
     <script type="module" src="/src/main.ts"></script>
 
