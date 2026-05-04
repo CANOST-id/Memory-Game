@@ -1,0 +1,23 @@
+@use '../abstract/mixin' as mixin;
+@use '../abstract/variables' as vars;
+
+body {
+    @include mixin.flex-center;
+}
+
+.game {
+    @include mixin.flex-center;
+
+    width: 80%;
+    max-width: 1580px;
+}
+
+header {
+    @include mixin.flex(row, space-between, center);
+    width: 100%;
+    height: 62px;
+
+    & .standings {
+        @include mixin.flex(row, center, center);
+    }
+}
