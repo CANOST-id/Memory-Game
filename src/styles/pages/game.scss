@@ -19,5 +19,9 @@ header {
 
     & .standings {
         @include mixin.flex(row, center, center);
+
+        &__player {
+            @include mixin.flex(row, center, center);
+        }
     }
 }
