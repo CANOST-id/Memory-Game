@@ -5,8 +5,4 @@ $game-theme-bg: #294F60;
 
 body.games-theme {
     background-color: $game-theme-bg;
-
-    &header .standings {
-        background-color: vars.$primary-yellow;
-    }
 }
