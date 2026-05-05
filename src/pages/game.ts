@@ -35,7 +35,7 @@ function applyTheme(theme: string) {
     };
 
     const themeClass = themeMap[theme];
-
+    Object.values(themeMap).forEach(cls => document.body.classList.remove(cls));
     if (themeClass) {
         document.body.classList.add(themeClass);
     }
