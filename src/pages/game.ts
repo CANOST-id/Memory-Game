@@ -42,7 +42,26 @@ function applyTheme(theme: string) {
 }
 
 function createGameBoard(boardSize: number | string) {
-    // logic to create the game board based on the selected board size
+    const table = document.querySelector('.game__table') as HTMLElement;
+    const size = parseInt(boardSize as string);
+    table.dataset['size'] = String(size);
+
+    for (let i = 0; i < size; i++) {
+        const card = document.createElement('div');
+        card.classList.add('card');
+
+        card.innerHTML = `
+            <div class="card__inner">
+                <div class="card__back">
+                    <img src="/src/assets/cards/code-vibes/da-logo.png" alt="DA Logo">
+                </div>
+                <div class="card__front"></div>
+            </div>
+        `;
+
+        card.addEventListener('click', () => card.classList.toggle('card--flipped'));
+        table.appendChild(card);
+    }
 }
 
 function initPlayer(playerMode: string) {
