@@ -3,6 +3,7 @@
 
 body.code-vibes {
     background-color: vars.$primary-dark;
+    margin-top: 41px;
 
     & header {
         font-family: Red-Rose-Bold;
@@ -14,7 +15,7 @@ body.code-vibes {
             gap: 20px;
 
             &__player {
-            gap: 4px;
+                gap: 4px;
 
                 &--blue {
                     color: vars.$cv-blue;
@@ -44,6 +45,51 @@ body.code-vibes {
             font-size: 26px;
             font-family: Red-Rose-Regular;
             color: white;
+        }
+
+        & button {
+            @include mixin.flex(row, center, center);
+            gap: 10px;
+            background-color: vars.$cv-exit-btn-bg;
+            border: vars.$cv-exit-btn-border;
+            border-radius: 1px;
+            padding: 16px 24px;
+            color: white;
+            font-family: Red-Rose-Bold;
+            font-size: 20px;
+            cursor: pointer;
+
+            & img {
+                width: 24px;
+                height: 24px;
+                filter: brightness(0) invert(1);
+            }
+
+            &:hover {
+                background-color: vars.$cv-exit-btn-hover-bg;
+                outline: vars.$cv-exit-btn-hover-border;
+                box-shadow: vars.$cv-exit-btn-hover-shadow;
+            }
+        }
+    }
+
+    & .card {
+        &__back {
+            background: vars.$cv-card-back-bg;
+
+            & img {
+                width: 50%;
+                opacity: 0.85;
+            }
+        }
+
+        &__front {
+            background-color: vars.$cv-card-front-bg;
+        }
+
+        &--state {
+            border: vars.$cv-card-state-border;
+            box-shadow: vars.$cv-card-state-shadow;
         }
     }
 }
