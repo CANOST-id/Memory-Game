@@ -11,6 +11,11 @@ body {
     width: 80%;
     max-width: 1580px;
     gap: 54px;
+    margin-top: 41px;
+
+    &:has(.game__table[data-size="36"]) {
+        margin-top: 10px;
+    }
 }
 
 header {
