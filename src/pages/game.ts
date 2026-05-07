@@ -1,3 +1,4 @@
+import { cardImages } from '../services/cards';
 interface Settings {
     theme: string;
     player: string;
@@ -15,8 +16,8 @@ if (document.querySelector('.game')) {
 function initGame() {
     const settings = loadGameSettings();
 
-    applyTheme(settings.theme);
-    createGameBoard(settings.boardSize);
+    const themeClass = applyTheme(settings.theme);
+    createGameBoard(settings.boardSize, themeClass);
     initPlayer(settings.player);
 }
 
@@ -39,29 +40,41 @@ function applyTheme(theme: string) {
     if (themeClass) {
         document.body.classList.add(themeClass);
     }
+    return themeClass;
 }
 
-function createGameBoard(boardSize: number | string) {
+function createGameBoard(boardSize: number | string, theme: string) {
     const table = document.querySelector('.game__table') as HTMLElement;
     const size = parseInt(boardSize as string);
     table.dataset['size'] = String(size);
+
+    const images = cardImages[theme];
+    const selected = images.slice(0, size / 2);
+    const pairs = [...selected, ...selected];
+    const shuffled = pairs.sort(() => Math.random() - 0.5);
 
     for (let i = 0; i < size; i++) {
         const card = document.createElement('div');
         card.classList.add('card');
 
-        card.innerHTML = `
-            <div class="card__inner">
-                <div class="card__back">
-                    <img src="/src/assets/cards/code-vibes/da-logo.png" alt="DA Logo">
-                </div>
-                <div class="card__front"></div>
-            </div>
-        `;
+        card.innerHTML = cardTemplate(theme, shuffled[i]);
 
         card.addEventListener('click', () => card.classList.toggle('card--flipped'));
         table.appendChild(card);
     }
+}
+
+function cardTemplate(theme: string, imgSrc: string): string {
+        return `
+            <div class="card__inner">
+                <div class="card__back">
+                    <img src="/src/assets/cards/${theme}/da-logo.png" alt="card back">
+                </div>
+                <div class="card__front">
+                    <img src="${imgSrc}" alt="card image">
+                </div>
+            </div>
+        `;
 }
 
 function initPlayer(playerMode: string) {
