@@ -18,10 +18,20 @@ body.code-vibes {
 
                 &--blue {
                     color: vars.$cv-blue;
+
+                    & .--cv-standings {
+                        display: flex;
+                        gap: 4px;
+                    }
                 }
 
                 &--orange {
                     color: vars.$cv-orange;
+
+                    & .--cv-standings {
+                        display: flex;
+                        gap: 4px;
+                    }
                 }
 
                 & .--label {
