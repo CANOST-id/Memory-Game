@@ -13,6 +13,8 @@ if (document.querySelector('.game')) {
         initGame();
     }
 }
+
+// Initialize the game based on saved settings or defaults
 function initGame() {
     const settings = loadGameSettings();
 
@@ -21,6 +23,7 @@ function initGame() {
     initPlayer(settings.player);
 }
 
+// Load game settings from localStorage or return default settings
 function loadGameSettings(): Settings {
     const savedSettings = localStorage.getItem('settings');
     if (savedSettings) {
@@ -29,6 +32,7 @@ function loadGameSettings(): Settings {
     return { theme: '', player: '', boardSize: '' };
 }
 
+// Apply the selected theme by adding the corresponding class to the body element
 function applyTheme(theme: string) {
     const themeMap: Record<string, string> = {
         'Code vibes theme': 'code-vibes',
@@ -43,6 +47,7 @@ function applyTheme(theme: string) {
     return themeClass;
 }
 
+// Create the game board based on the selected board size and theme
 function createGameBoard(boardSize: number | string, theme: string) {
     const table = document.querySelector('.game__table') as HTMLElement;
     const size = parseInt(boardSize as string);
@@ -64,6 +69,7 @@ function createGameBoard(boardSize: number | string, theme: string) {
     }
 }
 
+// Generate the HTML template for a card based on the theme and image source
 function cardTemplate(theme: string, imgSrc: string): string {
         return `
             <div class="card__inner">
@@ -81,7 +87,7 @@ function initPlayer(playerMode: string) {
     // current player 
 }
 
-
+// for testing purposes only, remove later
 document.getElementById('start-game')?.addEventListener('click', () => {
     console.log(loadGameSettings());
 })
