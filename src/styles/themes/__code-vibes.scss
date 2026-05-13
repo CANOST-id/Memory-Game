@@ -7,6 +7,11 @@ body.code-vibes {
     & header {
         font-family: Red-Rose-Bold;
 
+        // display none for games theme standings
+        & .standings__player .--gt-standings {
+            display: none;
+        }
+
         & .standings {
             font-size: 20px;
             background-color: vars.$cv-standings-bg;
@@ -16,22 +21,18 @@ body.code-vibes {
             &__player {
                 gap: 4px;
 
-                &--blue {
-                    color: vars.$cv-blue;
+                & .--cv-standings {
+                    @include mixin.flex(row, center, center);
 
-                    & .--cv-standings {
-                        display: flex;
-                        gap: 4px;
-                    }
+                    gap: 4px;
                 }
 
-                &--orange {
-                    color: vars.$cv-orange;
+                & .--blue {
+                    color: vars.$cv-blue;
+                }
 
-                    & .--cv-standings {
-                        display: flex;
-                        gap: 4px;
-                    }
+                & .--orange {
+                    color: vars.$cv-orange;
                 }
 
                 & .--label {
