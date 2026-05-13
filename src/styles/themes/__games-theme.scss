@@ -1,16 +1,98 @@
 @use '../abstract/mixin' as mixin;
 @use '../abstract/variables' as vars;
 
-$game-theme-bg: #294F60;
+
 
 body.games-theme {
-    background-color: $game-theme-bg;
+    background-color: vars.$game-theme-bg;
 
     & header {
         @include mixin.flex(row, space-between, center);
-
+        color: white;
+        font-size: 32px;
+        font-family: Orbitron;
+        font-weight: 700;
         background-color: vars.$gt-header-bg;
         padding: 24px;
         border-radius: 10px;
+
+        // display none for code vibes standings
+        & .standings__player .--cv-standings {
+            display: none;
+        }
+
+        & .standings {
+            @include mixin.flex(row, center, center);
+            background-color: white;
+            border-radius: 10px;
+            gap: 40px;
+            padding: 0 16px;
+
+            &__player {
+
+                & .--gt-standings {
+                    @include mixin.flex(row, center, center);
+                    font-size: 30px;
+                    height: 52px;
+                    gap: 8px;
+                }
+
+                & .--orange {
+                    color: vars.$gt-orange;
+                }
+
+                & .--blue {
+                    color: vars.$gt-blue;
+                }
+            }
+        }
+
+        & button {
+            @include mixin.flex(row, center, center);
+            font-family: Orbitron;
+            font-weight: 700;
+            font-size: 20px;
+            color: white;
+            background-color: vars.$gt-exit-btn-bg;
+            padding: 12px 20px;
+            border: vars.$gt-exit-btn-border;
+            border-radius: 10px;
+            cursor: pointer;
+            gap: 10px;
+
+            &:hover {
+                background-color: vars.$gt-exit-btn-hover-bg;
+                outline: vars.$gt-exit-btn-hover-border;
+                box-shadow: vars.$gt-exit-btn-hover-shadow;
+
+                & img {
+                    filter: vars.$gt-exit-btn-hover-img-color;
+                }
+            }
+        }
+    }
+
+    & .card {
+
+        &__back {
+            border-radius: 12px;
+            background: vars.$gt-card-back-bg;
+
+            & img {
+                width: 50%;
+                opacity: 0.85;
+            }
+        }
+
+        &__front {
+            border-radius: 12px;
+            background-color: vars.$gt-card-front-bg;
+        }
+
+        &--state {
+            border-radius: 12px;
+            border: vars.$gt-card-state-border;
+            box-shadow: vars.$gt-card-state-shadow;
+        }
     }
 }
