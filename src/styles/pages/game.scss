@@ -21,7 +21,6 @@ body {
 header {
     @include mixin.flex(row, space-between, flex-end);
     width: 100%;
-    height: 62px;
 
     & .standings {
         @include mixin.flex(row, center, center);
