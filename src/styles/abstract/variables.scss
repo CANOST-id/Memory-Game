@@ -36,6 +36,7 @@ $gt-orange: rgba(234, 105, 0, 1);
 $gt-blue: rgba(9, 127, 197, 1);
 $gt-dark-blue: rgba(10, 40, 53, 1);
 $gt-pink: rgba(237, 27, 118, 1);
+$game-theme-bg: #294F60;
 
 // game theme header colors
 $gt-header-bg: rgba(253, 150, 201, 0.2);
@@ -44,8 +45,9 @@ $gt-header-bg: rgba(253, 150, 201, 0.2);
 $gt-exit-btn-bg: rgba(237, 27, 118, 0.08);
 $gt-exit-btn-hover-bg: rgba(237, 27, 118, 0.14);
 $gt-exit-btn-border: 2px solid rgba(231, 28, 79, 1);
-$gt-exit-btn-hover-border: 3px solid rgba(231, 28, 79, 1);
+$gt-exit-btn-hover-border: 1px solid rgba(231, 28, 79, 1);
 $gt-exit-btn-hover-shadow: 3px 3px 5px 0px rgba(47, 46, 46, 0.2);
+$gt-exit-btn-hover-img-color:  invert(24%) sepia(91%) saturate(4397%) hue-rotate(333deg) brightness(92%) contrast(98%);
 
 // game theme pop-up button colors
 $gt-popup-btn-bg: rgba(237, 27, 118, 1);
@@ -56,5 +58,7 @@ $gt-popup-btn-hover-shadow: 3px 3px 5px 0px rgba(47, 46, 46, 0.2);
 
 // game theme card colors
 $gt-card-front-bg: rgba(246, 241, 243, 1);
-$gt-card-back-bg: linear-gradient(147.13deg, $gt-pink, $gt-dark-blue);
+$gt-card-back-bg: linear-gradient(225deg, $gt-pink, $gt-dark-blue);
 $gt-card-shadow: 6px 6px 12px 0px rgba(0, 0, 0, 0.25);
+$gt-card-state-border: 3px solid #ED1B76;
+$gt-card-state-shadow: 5px 5px 8px 0px #ED1B764D;
