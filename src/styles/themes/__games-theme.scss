@@ -45,6 +45,37 @@ body.games-theme {
             }
         }
 
+        & .current-player {
+            @include mixin.flex(row, center, center);
+            gap: 10px;
+
+            &__indicator {
+                @include mixin.flex(row, center, center);
+                width: 36px;
+                height: 36px;
+                border-radius: 8px;
+            }
+
+            &__indicator::before {
+                content: '';
+                width: 20px;
+                height: 20px;
+                background-image: url('/src/assets/icons/chess_pawn.png');
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: contain;
+                filter: brightness(0) invert(1);
+            }
+
+            &__indicator.is-orange {
+                background-color: vars.$gt-orange;
+            }
+
+            &__indicator.is-blue {
+                background-color: vars.$gt-blue;
+            }
+        }
+
         & button {
             @include mixin.flex(row, center, center);
             font-family: Orbitron;
@@ -71,6 +102,19 @@ body.games-theme {
     }
 
     & .card {
+        &--matched {
+            cursor: default;
+        }
+
+        &--matched-orange .card__front {
+            border: 3px solid vars.$gt-orange;
+            box-shadow: 0 0 14px vars.$gt-orange;
+        }
+
+        &--matched-blue .card__front {
+            border: 3px solid vars.$gt-blue;
+            box-shadow: 0 0 14px vars.$gt-blue;
+        }
 
         &__back {
             border-radius: 12px;

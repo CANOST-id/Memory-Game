@@ -52,9 +52,32 @@ body.code-vibes {
         }
 
         & .current-player {
+            @include mixin.flex(row, center, center);
+            gap: 10px;
             font-size: 26px;
             font-family: Red-Rose-Regular;
             color: white;
+
+            &__indicator {
+                display: inline-block;
+                width: 24px;
+                height: 20px;
+                border-radius: 4px;
+                background-color: currentColor;
+                clip-path: polygon(0 0,
+                        calc(100% - 8px) 0,
+                        100% 50%,
+                        calc(100% - 8px) 100%,
+                        0 100%);
+            }
+
+            &__indicator.is-blue {
+                color: vars.$cv-blue;
+            }
+
+            &__indicator.is-orange {
+                color: vars.$cv-orange;
+            }
         }
 
         & button {
@@ -84,6 +107,20 @@ body.code-vibes {
     }
 
     & .card {
+        &--matched {
+            cursor: default;
+        }
+
+        &--matched-orange .card__front {
+            border: 3px solid vars.$cv-orange;
+            box-shadow: 0 0 14px vars.$cv-orange;
+        }
+
+        &--matched-blue .card__front {
+            border: 3px solid vars.$cv-blue;
+            box-shadow: 0 0 14px vars.$cv-blue;
+        }
+
         &__back {
             background: vars.$cv-card-back-bg;
 
