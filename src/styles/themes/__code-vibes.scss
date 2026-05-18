@@ -59,15 +59,15 @@ body.code-vibes {
 
         & button {
             @include mixin.flex(row, center, center);
-            gap: 10px;
-            background-color: vars.$cv-exit-btn-bg;
-            border: vars.$cv-exit-btn-border;
-            border-radius: 1px;
-            padding: 16px 24px;
-            color: white;
             font-family: Red-Rose-Bold;
             font-size: 20px;
+            color: white;
+            background-color: vars.$cv-exit-btn-bg;
+            padding: 16px 24px;
+            border: vars.$cv-exit-btn-border;
+            border-radius: 1px;
             cursor: pointer;
+            gap: 10px;
 
             & img {
                 width: 24px;
