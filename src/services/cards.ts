@@ -37,5 +37,6 @@ export const cardImages: Record<string, string[]> = {
         '/src/assets/cards/games-theme/square.png',
         '/src/assets/cards/games-theme/toad.png',
         '/src/assets/cards/games-theme/triangle.png',
+        '/src/assets/cards/games-theme/joystick.png'
     ]
 };
