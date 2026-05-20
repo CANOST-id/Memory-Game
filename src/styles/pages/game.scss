@@ -81,3 +81,122 @@ header {
         }
     }
 }
+
+dialog {
+    display: none;
+    width: 100%;
+    height: 140vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    opacity: 0;
+
+    & .dialog-inner {
+        @include mixin.flex(column, center, center);
+        background-color: white;
+        text-align: center;
+        transform: translateY(-600px);
+        opacity: 0;
+    }
+
+}
+
+.show-dialog {
+    @include mixin.flex-center;
+    animation: backdropFadeIn 0.32s ease forwards;
+
+    & .dialog-inner {
+        animation: dialogSlideInFromTop 0.32s ease forwards;
+    }
+}
+
+.is-closing-up {
+    animation: backdropFadeOut 0.32s ease forwards;
+
+    & .dialog-inner {
+        animation: dialogSlideOutToTop 0.32s ease forwards;
+    }
+}
+
+.is-closing-down {
+    animation: backdropFadeOut 0.32s ease forwards;
+
+    & .dialog-inner {
+        animation: dialogSlideOutToBottom 0.32s ease forwards;
+    }
+}
+
+.is-closing-fade {
+    animation: backdropFadeOut 0.32s ease forwards;
+
+    & .dialog-inner {
+        animation: dialogFadeOutSoft 0.32s ease forwards;
+    }
+}
+
+@keyframes dialogSlideInFromTop {
+    from {
+        transform: translateY(-600px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes dialogSlideOutToTop {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(-600px);
+        opacity: 0;
+    }
+}
+
+@keyframes dialogSlideOutToBottom {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(600px);
+        opacity: 0;
+    }
+}
+
+@keyframes dialogFadeOutSoft {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 0;
+    }
+}
+
+@keyframes backdropFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes backdropFadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
