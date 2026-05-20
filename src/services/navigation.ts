@@ -17,3 +17,7 @@ export function gameOver() {
 export function gameEnd() {
     window.location.href = 'game-end.html';
 }
+
+export function quitGame() {
+    window.location.href = 'settings.html';
+}
