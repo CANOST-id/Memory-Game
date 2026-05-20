@@ -51,15 +51,14 @@ body.games-theme {
 
             &__indicator {
                 @include mixin.flex(row, center, center);
-                width: 36px;
-                height: 36px;
-                border-radius: 8px;
+                padding: 4px 8px;
+                border-radius: 3px;
             }
 
             &__indicator::before {
                 content: '';
-                width: 20px;
-                height: 20px;
+                width: 25px;
+                height: 32px;
                 background-image: url('/src/assets/icons/chess_pawn.png');
                 background-repeat: no-repeat;
                 background-position: center;
@@ -136,5 +135,50 @@ body.games-theme {
             border: vars.$gt-card-state-border;
             box-shadow: vars.$gt-card-state-shadow;
         }
+    }
+
+    & .dialog-inner {
+        width: 35%;
+        border-radius: 20px;
+        color: vars.$gt-dark-blue;
+        font-family: Orbitron;
+        font-weight: bold;
+        font-weight: 700;
+        font-size: 28px;
+        line-height: 40px;
+        letter-spacing: 2%;
+        background-color: vars.$game-theme-dialog-bg;
+        padding: 40px;
+        gap: 40px;
+    }
+
+    & .show-dialog .dialog-inner {
+        animation: dialogSlideInFromBottom 0.32s ease forwards;
+    }
+
+    & .is-closing-down.dialog-inner,
+    & .is-closing-down .dialog-inner {
+        animation: dialogSlideOutToBottom 0.32s ease forwards;
+    }
+
+    & .is-closing-fade.dialog-inner,
+    & .is-closing-fade .dialog-inner {
+        animation: dialogFadeOutSoft 0.32s ease forwards;
+    }
+
+    & dialog .dialog-inner {
+        transform: translateY(600px);
+    }
+}
+
+@keyframes dialogSlideInFromBottom {
+    from {
+        transform: translateY(600px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
     }
 }

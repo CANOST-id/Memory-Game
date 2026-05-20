@@ -139,4 +139,17 @@ body.code-vibes {
             box-shadow: vars.$cv-card-state-shadow;
         }
     }
+
+    & .dialog-inner {
+        width: 35%;
+        color: vars.$primary-dark;
+        font-family: Red-Rose-Bold;
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 40px;
+        letter-spacing: 0%;
+        background-color: white;
+        padding: 40px;
+        gap: 54px;
+    }
 }
