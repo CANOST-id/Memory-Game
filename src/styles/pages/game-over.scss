@@ -1,0 +1,27 @@
+@use '../abstract/mixin' as mixin;
+@use '../abstract/variables' as vars;
+
+.game-over {
+    @include mixin.flex-column;
+    width: 80%;
+    height: 100vh;
+    max-width: 1580px;
+    gap: 124px;
+    font-family: Red-Rose-Bold;
+
+    & h1 {
+        font-size: 84px;
+        font-weight: 700;
+    }
+
+    & .score-wrapper {
+        @include mixin.flex-column;
+        gap: 24px;
+
+        & .__score {
+            @include mixin.flex(row, center, center);
+            font-size: 48px;
+            font-weight: 700;
+        }
+    }
+}
