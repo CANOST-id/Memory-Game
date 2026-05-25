@@ -150,6 +150,56 @@ body.games-theme {
         background-color: vars.$game-theme-dialog-bg;
         padding: 40px;
         gap: 40px;
+
+        & .--btn__wrapper {
+            @include mixin.flex(row, center, center);
+            gap: 24px;
+
+            & #back-to-game {
+                @include mixin.flex(row, center, center);
+                font-family: Orbitron;
+                font-size: 20px;
+                font-weight: 700;
+                color: white;
+                background-color: vars.$gt-popup-btn-bg;
+                padding: 16px 24px;
+                border: none;
+                border-radius: 10px;
+                cursor: pointer;
+                gap: 10px;
+
+                &:hover {
+                    background-color: vars.$gt-popup-btn-hover-bg;
+                    outline: vars.$gt-popup-btn-hover-border;
+                    outline-offset: -2px;
+                    color: vars.$gt-popup-btn-hover-font-color;
+                    box-shadow: vars.$gt-popup-btn-hover-shadow;
+                }
+            }
+
+            & #exit-game-dialog {
+                @include mixin.flex(row, center, center);
+                background-color: vars.$gt-popup-btn-exit-bg;
+                font-family: Orbitron;
+                font-size: 20px;
+                font-weight: 700;
+                color: vars.$gt-popup-btn-hover-font-color;
+                padding: 16px 24px;
+                outline: vars.$gt-popup-btn-hover-border;
+                outline-offset: -2px;
+                border: none;
+                border-radius: 10px;
+                cursor: pointer;
+                gap: 10px;
+
+                &:hover {
+                    outline: vars.$gt-popup-btn-hover-border;
+                    outline-offset: -2px;
+                    box-shadow: vars.$gt-popup-btn-hover-shadow;
+                    background-color: vars.$gt-popup-btn-hover-bg;
+                }
+            }
+        }
     }
 
     & .show-dialog .dialog-inner {
