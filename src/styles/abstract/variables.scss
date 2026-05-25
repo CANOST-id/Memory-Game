@@ -19,8 +19,12 @@ $cv-exit-btn-hover-shadow: 4px 4px 6px 0px rgba(77, 213, 188, 0.2);
 
 // pop-up button colors
 $cv-popup-btn-bg: rgba(102, 207, 188, 1);
+$cv-popup-btn-border: 3px solid rgba(58, 188, 164, 1);
 $cv-popup-btn-hover-bg: rgba(102, 207, 188, 0.7);
 $cv-popup-btn-hover-border: 3px solid rgba(58, 188, 164, 1);
+$cv-popup-btn-exit-bg: rgba(134, 233, 214, 0.14);
+$cv-popup-btn-exit-bg-border: 2px solid rgba(77, 213, 188, 1);
+$cv-popup-btn-exit-color:  rgba(77, 213, 188, 1);
 
 // card colors
 $cv-card-front-bg: rgba(232, 243, 240, 1);
@@ -52,10 +56,11 @@ $gt-exit-btn-hover-img-color:  invert(24%) sepia(91%) saturate(4397%) hue-rotate
 
 // game theme pop-up button colors
 $gt-popup-btn-bg: rgba(237, 27, 118, 1);
-$gt-popup-btn-hover-bg: rgba(242, 199, 218, 0.08);
+$gt-popup-btn-hover-bg: rgba(242, 199, 218, 0.8);
 $gt-popup-btn-hover-border: 2px solid rgba(231, 28, 79, 1);
 $gt-popup-btn-hover-font-color: rgba(237, 27, 118, 1);
 $gt-popup-btn-hover-shadow: 3px 3px 5px 0px rgba(47, 46, 46, 0.2);
+$gt-popup-btn-exit-bg: rgba(237, 27, 118, 0.08);
 
 // game theme card colors
 $gt-card-front-bg: rgba(246, 241, 243, 1);
