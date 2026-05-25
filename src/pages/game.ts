@@ -1,4 +1,5 @@
 import { cardImages } from '../services/cards';
+import { gameOver } from '../services/navigation';
 
 interface Settings {
     theme: string;
@@ -224,6 +225,9 @@ function handleMatch(state: GameState, cards: [HTMLElement, HTMLElement], player
     state.matchedPairs += 1;
     if (state.matchedPairs === state.totalPairs) {
         persistGameResult(state);
+        window.setTimeout(() => {
+            gameOver();
+        }, 2000);
     }
     finishTurn(state, false);
 }
