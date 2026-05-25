@@ -101,6 +101,7 @@ body.code-vibes {
             &:hover {
                 background-color: vars.$cv-exit-btn-hover-bg;
                 outline: vars.$cv-exit-btn-hover-border;
+                outline-offset: -2px;
                 box-shadow: vars.$cv-exit-btn-hover-shadow;
             }
         }
@@ -151,5 +152,48 @@ body.code-vibes {
         background-color: white;
         padding: 40px;
         gap: 54px;
+
+        & .--btn__wrapper {
+            @include mixin.flex(row, center, center);
+            gap: 24px;
+
+            & #back-to-game {
+                @include mixin.flex(row, center, center);
+                font-family: Red-Rose-Bold;
+                font-size: 20px;
+                color: white;
+                background-color: vars.$cv-popup-btn-bg;
+                padding: 16px 24px;
+                border: none;
+                cursor: pointer;
+                gap: 10px;
+
+                &:hover {
+                    background-color: vars.$cv-popup-btn-hover-bg;
+                    outline: vars.$cv-popup-btn-hover-border;
+                    outline-offset: -3px;
+                }
+            }
+
+            & #exit-game-dialog {
+                @include mixin.flex(row, center, center);
+                font-family: Red-Rose-Bold;
+                font-size: 20px;
+                color: vars.$cv-popup-btn-exit-color;
+                background-color: vars.$cv-popup-btn-exit-bg;
+                padding: 16px 24px;
+                outline: vars.$cv-popup-btn-exit-bg-border;
+                outline-offset: -2px;
+                border: none;
+                cursor: pointer;
+                gap: 10px;
+
+                &:hover {
+                    outline: vars.$cv-popup-btn-hover-border;
+                    outline-offset: -3px;
+                    box-shadow: vars.$cv-exit-btn-hover-shadow;
+                }
+            }
+        }
     }
 }
