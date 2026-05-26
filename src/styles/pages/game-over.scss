@@ -3,10 +3,12 @@
 
 .game-over {
     @include mixin.flex-column;
+    align-items: center;
+    justify-content: center;
     width: 80%;
     height: 100vh;
     max-width: 1580px;
-    gap: 124px;
+    gap: 72px;
     font-family: Red-Rose-Bold;
 
     & h1 {
@@ -15,13 +17,21 @@
     }
 
     & .score-wrapper {
-        @include mixin.flex-column;
+        @include mixin.flex(column, center, center);
         gap: 24px;
 
-        & .__score {
-            @include mixin.flex(row, center, center);
-            font-size: 48px;
-            font-weight: 700;
+        & .score {
+            font-family: Red-Rose-Regular;
+            font-weight: 400;
+            line-height: 100%;
+            letter-spacing: 0%;
+            font-size: 26px;
+            color: white;
         }
+    }
+
+    & .standings {
+        width: auto;
+        display: flex;
     }
 }
