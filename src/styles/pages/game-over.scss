@@ -11,6 +11,25 @@
     gap: 72px;
     font-family: Red-Rose-Bold;
 
+    &__theme {
+        @include mixin.flex(column, center, center);
+        gap: 72px;
+        width: 100%;
+    }
+
+    &__theme--code-vibes {
+        display: none;
+    }
+
+    &__theme--games-theme {
+        display: flex;
+    }
+
+    &__logo {
+        max-width: min(90%, 560px);
+        height: auto;
+    }
+
     & h1 {
         font-size: 84px;
         font-weight: 700;
@@ -33,5 +52,25 @@
     & .standings {
         width: auto;
         display: flex;
+    }
+}
+
+body.code-vibes .game-over {
+    & .game-over__theme--games-theme {
+        display: none;
+    }
+
+    & .game-over__theme--code-vibes {
+        display: flex;
+    }
+}
+
+body.games-theme .game-over {
+    & .game-over__theme--games-theme {
+        display: flex;
+    }
+
+    & .game-over__theme--code-vibes {
+        display: none;
     }
 }
