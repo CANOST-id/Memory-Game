@@ -52,8 +52,8 @@ function displayFinalScore(result: GameResult): void {
 
 function updateScoreElements(player: PlayerColor, score: number) {
     const colorClass = player === 'Orange' ? '--orange' : '--blue';
-    const cvScore = document.querySelector(`.standings .--cv-standings.${colorClass} .--score`) as HTMLElement | null;
-    const gtScore = document.querySelector(`.standings .--gt-standings.${colorClass} p`) as HTMLElement | null;
+    const cvScore = document.querySelector(`.game-over__theme--code-vibes .--cv-standings.${colorClass} .--score`) as HTMLElement | null;
+    const gtScore = document.querySelector(`.game-over__theme--games-theme .--gt-standings.${colorClass} p`) as HTMLElement | null;
 
     if (cvScore) cvScore.textContent = String(score);
     if (gtScore) gtScore.textContent = String(score);
