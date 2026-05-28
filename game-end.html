@@ -8,27 +8,50 @@
 <body>
 
     <section class="game-end">
-        <section class="game-end__code-vibes">
-            <img src="./src/assets/images/cv-confetti.png" alt="confetti">
+        <section class="game-end__theme game-end__theme--code-vibes">
+            <img class="game-end__confetti" src="/src/assets/images/cv-confetti.png" alt="confetti">
 
             <div class="winner-wrapper">
-                <span>The winner is</span>
+                <span class="status-text">The winner is</span>
 
-                <h2 class="winner"></h2>
+                <h2 class="winner winner-title"></h2>
 
-                <div class="chess-icon">
-                    
+                <div class="winner-icon winner-content winner-icon--pawn">
                 </div>
 
-            </div>
+                <img class="draw-logo draw-content" src="/src/assets/images/draw-logo.png" alt="draw logo">
 
-        
+                <img class="draw-image draw-content" src="/src/assets/images/draw-img.png" alt="draw symbol">
+
+                <button id="back-to-start">
+                    <img src="/src/assets/icons/move_item.png" alt="back icon">
+                    Back to start
+                </button>
+            </div>
         </section>
 
-        <section class="game-end__games-theme">
+        <section class="game-end__theme game-end__theme--games-theme">
+            <div class="winner-wrapper">
+                <span class="status-text">The winner is</span>
 
+                <h2 class="winner winner-title"></h2>
+
+                <h1 class="draw-title draw-content">DRAW</h1>
+
+                <img class="draw-image draw-content" src="/src/assets/images/draw-img.png" alt="draw symbol">
+
+                <div class="winner-icon winner-icon--trophy winner-content">
+                    <img src="/src/assets/images/pockal.png" alt="winner trophy">
+                </div>
+
+                <button id="home">
+                    Home
+                </button>
+            </div>
         </section>
     </section>
+
+    <script type="module" src="/src/main.ts"></script>
     
 </body>
 </html>
