@@ -1,48 +1,7 @@
-interface GameResult {
-    winner: 'Orange' | 'Blue' | 'Draw';
-    orangeScore: number;
-    blueScore: number;
-}
-
-interface Settings {
-    theme: string;
-}
+import { gameEnd } from '../services/navigation';
+import { applyTheme, loadGameSettings, loadResultFromStorage, type GameResult } from '../services/game-result';
 
 type PlayerColor = 'Orange' | 'Blue';
-
-function loadGameSettings(): Settings | null {
-    const rawSettings = localStorage.getItem('settings');
-    if (!rawSettings) return null;
-
-    try {
-        return JSON.parse(rawSettings) as Settings;
-    } catch {
-        return null;
-    }
-}
-
-function applyTheme(theme: string) {
-    const themeMap: Record<string, string> = {
-        'Code vibes theme': 'code-vibes',
-        'Gaming theme': 'games-theme'
-    };
-
-    Object.values(themeMap).forEach(cls => document.body.classList.remove(cls));
-    const themeClass = themeMap[theme];
-    if (themeClass) document.body.classList.add(themeClass);
-}
-
-// Load the game result from localStorage
-function loadScoreFromStorage(): GameResult | null {
-    const rawResult = localStorage.getItem('gameResult');
-    if (!rawResult) return null;
-
-    try {
-        return JSON.parse(rawResult) as GameResult;
-    } catch {
-        return null;
-    }
-}
 
 // show the final score
 function displayFinalScore(result: GameResult): void {
@@ -64,6 +23,10 @@ if (document.querySelector('.game-over')) {
     const settings = loadGameSettings();
     if (settings?.theme) applyTheme(settings.theme);
 
-    const result = loadScoreFromStorage();
+    const result = loadResultFromStorage();
     if (result) displayFinalScore(result);
+
+    window.setTimeout(() => {
+        gameEnd();
+    }, 3000);
 }
