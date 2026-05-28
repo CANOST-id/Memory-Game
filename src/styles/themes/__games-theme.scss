@@ -103,6 +103,10 @@ body.games-theme {
     & .game-over {
         font-family: Orbitron;
 
+        & h1 {
+            color: vars.$gt-pink;
+        }
+
         // display none for code vibes standings
         & .standings__player .--cv-standings {
             display: none;
@@ -131,6 +135,65 @@ body.games-theme {
                 & .--blue {
                     color: vars.$gt-blue;
                 }
+            }
+        }
+    }
+
+    & .game-end {
+        color: white;
+        font-family: Orbitron;
+
+        & .winner-wrapper {
+            gap: 24px;
+
+            & span {
+                font-size: 28px;
+                font-weight: 500;
+            }
+
+            & .winner {
+                font-size: clamp(46px, 7vw, 84px);
+                line-height: 1;
+            }
+
+            & .winner.is-orange {
+                color: vars.$gt-orange;
+            }
+
+            & .winner.is-blue {
+                color: vars.$gt-blue;
+            }
+
+            & .draw-title.is-draw {
+                color: vars.$gt-pink;
+            }
+
+            & .draw-image.is-draw {
+                filter: brightness(0) saturate(100%) invert(17%) sepia(83%) saturate(5777%) hue-rotate(323deg) brightness(94%) contrast(96%);
+            }
+        }
+
+        & .winner-icon--trophy {
+            @include mixin.flex-center;
+        }
+
+        & #home {
+            @include mixin.flex(row, center, center);
+            font-family: Orbitron;
+            font-weight: 700;
+            font-size: 20px;
+            color: white;
+            background-color: vars.$gt-exit-btn-bg;
+            padding: 12px 20px;
+            border: vars.$gt-exit-btn-border;
+            border-radius: 10px;
+            cursor: pointer;
+            gap: 10px;
+
+            &:hover {
+                background-color: vars.$gt-exit-btn-hover-bg;
+                outline: vars.$gt-exit-btn-hover-border;
+                box-shadow: vars.$gt-exit-btn-hover-shadow;
             }
         }
     }
