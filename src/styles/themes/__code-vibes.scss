@@ -154,6 +154,92 @@ body.code-vibes {
         }
     }
 
+    & .game-end {
+        color: white;
+        font-family: Red-Rose-Bold;
+
+        & .winner-wrapper {
+            gap: 24px;
+            margin-top: 80px;
+
+            & span {
+                font-family: Red-Rose-Regular;
+                font-size: 28px;
+            }
+
+            & .winner {
+                font-size: clamp(46px, 7vw, 84px);
+                line-height: 1;
+            }
+
+            & .winner.is-orange {
+                color: vars.$cv-orange;
+            }
+
+            & .winner.is-blue {
+                color: vars.$cv-blue;
+            }
+
+            & .draw-logo.is-draw {
+                filter: brightness(0) saturate(100%) invert(70%) sepia(42%) saturate(591%) hue-rotate(115deg) brightness(93%) contrast(88%);
+            }
+
+            & .draw-image.is-draw {
+                filter: brightness(0) saturate(100%) invert(70%) sepia(42%) saturate(591%) hue-rotate(115deg) brightness(93%) contrast(88%);
+            }
+        }
+
+        & .winner-icon--pawn {
+            background-color: currentColor;
+            -webkit-mask-image: url('/src/assets/images/chess-pawn-end.png');
+            -webkit-mask-repeat: no-repeat;
+            -webkit-mask-position: center;
+            -webkit-mask-size: contain;
+            mask-image: url('/src/assets/images/chess-pawn-end.png');
+            mask-repeat: no-repeat;
+            mask-position: center;
+            mask-size: contain;
+        }
+
+        & .winner-icon--pawn.is-orange {
+            color: vars.$cv-orange;
+        }
+
+        & .winner-icon--pawn.is-blue {
+            color: vars.$cv-blue;
+        }
+
+        & .status-text {
+            text-transform: none;
+        }
+
+        & #back-to-start {
+            @include mixin.flex(row, center, center);
+            font-family: Red-Rose-Bold;
+            font-size: 20px;
+            color: white;
+            background-color: vars.$cv-exit-btn-bg;
+            padding: 16px 24px;
+            border: vars.$cv-exit-btn-border;
+            border-radius: 1px;
+            cursor: pointer;
+            gap: 10px;
+
+            & img {
+                width: 24px;
+                height: 24px;
+                filter: brightness(0) invert(1);
+            }
+
+            &:hover {
+                background-color: vars.$cv-exit-btn-hover-bg;
+                outline: vars.$cv-exit-btn-hover-border;
+                outline-offset: -2px;
+                box-shadow: vars.$cv-exit-btn-hover-shadow;
+            }
+        }
+    }
+
     & .card {
         &--matched {
             cursor: default;
