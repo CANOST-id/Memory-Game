@@ -1,0 +1,119 @@
+@use '../abstract/mixin' as mixin;
+
+.game-end {
+    @include mixin.flex(column, center, center);
+    width: 100%;
+    height: 100vh;
+    max-width: 1580px;
+    margin: 0 auto;
+
+    &__theme {
+        @include mixin.flex(column, center, center);
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    &__theme--code-vibes {
+        display: none;
+    }
+
+    &__theme--games-theme {
+        display: flex;
+    }
+
+    &__confetti {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+    }
+
+    & .winner-wrapper {
+        @include mixin.flex(column, center, center);
+        gap: 20px;
+    }
+
+    & .winner {
+        text-transform: capitalize;
+    }
+
+    & .draw-content {
+        display: none;
+    }
+
+    & .winner-content {
+        display: block;
+    }
+
+    &__theme.state--draw {
+        & .draw-content {
+            display: block;
+        }
+
+        & .winner-icon--trophy {
+            display: none !important;
+        }
+
+        & .winner-content,
+        & .winner-title {
+            display: none;
+        }
+    }
+
+    &__theme.state--winner {
+        & .draw-content {
+            display: none;
+        }
+
+        & .winner-icon--trophy {
+            display: block;
+        }
+    }
+
+    & .winner-icon--pawn {
+        width: 112px;
+        height: 112px;
+    }
+
+    & .draw-logo {
+        width: 288px;
+        height: auto;
+    }
+
+    & .draw-title {
+        font-size: clamp(56px, 10vw, 120px);
+        line-height: 1;
+    }
+
+    & .draw-image {
+        width: 250px;
+        height: auto;
+    }
+
+    & .winner-icon--trophy img {
+        width: 288px;
+        height: auto;
+    }
+}
+
+body.code-vibes .game-end {
+    & .game-end__theme--games-theme {
+        display: none;
+    }
+
+    & .game-end__theme--code-vibes {
+        display: flex;
+    }
+}
+
+body.games-theme .game-end {
+    & .game-end__theme--games-theme {
+        display: flex;
+    }
+
+    & .game-end__theme--code-vibes {
+        display: none;
+    }
+}
