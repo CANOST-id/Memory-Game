@@ -67,7 +67,8 @@
                     background-color: vars.$primary-dark;
                 }
 
-                &:checked+label {
+                &:checked+label,
+                &:hover+label {
                     font-weight: bold;
                     position: relative;
 
@@ -101,6 +102,30 @@
             & label {
                 font-size: 20px;
                 cursor: pointer;
+
+                &:hover {
+                    font-weight: bold;
+                    position: relative;
+
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        right: -65px;
+                        top: 0;
+                        border: 6px solid vars.$primary-yellow;
+                        transform: rotate(45deg) translateY(70%);
+                        z-index: 1;
+                    }
+
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        right: -55px;
+                        width: 41px;
+                        border: 2px solid vars.$primary-yellow;
+                        transform: translateY(250%);
+                    }
+                }
             }
         }
     }
