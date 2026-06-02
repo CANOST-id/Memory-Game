@@ -180,12 +180,16 @@
     cursor: pointer !important;
     background-color: vars.$primary-yellow !important;
 
+    & img {
+        transition: transform 0.18s ease;
+        transform: rotate(0deg);
+    }
+
     &:hover {
-        transform: scale(1.07);
+        transform: scale(1.05);
 
         & img {
-            transition: all 0.1s ease;
-            transform: rotate(-5deg);
+            transform: rotate(-10deg);
         }
     }
 }
