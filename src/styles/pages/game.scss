@@ -12,10 +12,6 @@ body {
     max-width: 1580px;
     gap: 54px;
     margin-top: 41px;
-
-    &:has(.game__table[data-size="36"]) {
-        margin-top: 5px;
-    }
 }
 
 header {
@@ -33,18 +29,20 @@ header {
 
 .game__table {
     display: grid;
-    gap: 8px;
-
+    
     &[data-size="16"] {
         grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
     }
 
     &[data-size="24"] {
         grid-template-columns: repeat(6, 1fr);
+        gap: 8px;
     }
 
     &[data-size="36"] {
         grid-template-columns: repeat(6, 1fr);
+        gap: 6px;
     }
 
     & .card {

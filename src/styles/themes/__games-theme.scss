@@ -4,97 +4,104 @@
 body.games-theme {
     background-color: vars.$gt-bg;
 
-    & .game > header {
-        @include mixin.flex(row, space-between, center);
-        color: white;
-        font-size: 32px;
-        font-family: Orbitron;
-        font-weight: 700;
-        background-color: vars.$gt-header-bg;
-        padding: 24px;
-        border-radius: 10px;
-
-        // display none for code vibes standings
-        & .standings__player .--cv-standings {
-            display: none;
+    & .game {
+        &:has(.game__table[data-size="36"]) {
+            margin-top: 5px;
+            gap: 24px;
         }
 
-        & .standings {
-            @include mixin.flex(row, center, center);
-            background-color: white;
-            border-radius: 10px;
-            gap: 40px;
-            padding: 0 16px;
-
-            &__player {
-
-                & .--gt-standings {
-                    @include mixin.flex(row, center, center);
-                    font-size: 30px;
-                    height: 52px;
-                    gap: 8px;
-                }
-
-                & .--orange {
-                    color: vars.$gt-orange;
-                }
-
-                & .--blue {
-                    color: vars.$gt-blue;
-                }
-            }
-        }
-
-        & .current-player {
-            @include mixin.flex(row, center, center);
-            gap: 10px;
-
-            &__indicator {
-                @include mixin.flex(row, center, center);
-                padding: 4px 8px;
-                border-radius: 3px;
-            }
-
-            &__indicator::before {
-                content: '';
-                width: 25px;
-                height: 32px;
-                background-image: url('/src/assets/icons/chess_pawn.png');
-                background-repeat: no-repeat;
-                background-position: center;
-                background-size: contain;
-                filter: brightness(0) invert(1);
-            }
-
-            &__indicator.is-orange {
-                background-color: vars.$gt-orange;
-            }
-
-            &__indicator.is-blue {
-                background-color: vars.$gt-blue;
-            }
-        }
-
-        & button {
-            @include mixin.flex(row, center, center);
+        >header {
+            @include mixin.flex(row, space-between, center);
+            color: white;
+            font-size: 32px;
             font-family: Orbitron;
             font-weight: 700;
-            font-size: 20px;
-            color: white;
-            background-color: vars.$gt-exit-btn-bg;
-            padding: 12px 20px;
-            border: vars.$gt-exit-btn-border;
+            background-color: vars.$gt-header-bg;
+            padding: 24px;
             border-radius: 10px;
-            cursor: pointer;
-            gap: 10px;
 
-            &:hover {
-                background-color: vars.$gt-exit-btn-hover-bg;
-                outline: vars.$gt-exit-btn-hover-border;
-                box-shadow: vars.$gt-exit-btn-hover-shadow;
+            // display none for code vibes standings
+            & .standings__player .--cv-standings {
+                display: none;
+            }
 
-                & img {
-                    filter: vars.$gt-exit-btn-hover-img-color;
+            & .standings {
+                @include mixin.flex(row, center, center);
+                background-color: white;
+                border-radius: 10px;
+                gap: 40px;
+                padding: 0 16px;
+
+                &__player {
+
+                    & .--gt-standings {
+                        @include mixin.flex(row, center, center);
+                        font-size: 30px;
+                        height: 52px;
+                        gap: 8px;
+                    }
+
+                    & .--orange {
+                        color: vars.$gt-orange;
+                    }
+
+                    & .--blue {
+                        color: vars.$gt-blue;
+                    }
+                }
+            }
+
+            & .current-player {
+                @include mixin.flex(row, center, center);
+                gap: 10px;
+
+                &__indicator {
+                    @include mixin.flex(row, center, center);
+                    padding: 4px 8px;
+                    border-radius: 3px;
+                }
+
+                &__indicator::before {
+                    content: '';
+                    width: 25px;
+                    height: 32px;
+                    background-image: url('/src/assets/icons/chess_pawn.png');
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: contain;
+                    filter: brightness(0) invert(1);
+                }
+
+                &__indicator.is-orange {
+                    background-color: vars.$gt-orange;
+                }
+
+                &__indicator.is-blue {
+                    background-color: vars.$gt-blue;
+                }
+            }
+
+            & button {
+                @include mixin.flex(row, center, center);
+                font-family: Orbitron;
+                font-weight: 700;
+                font-size: 20px;
+                color: white;
+                background-color: vars.$gt-exit-btn-bg;
+                padding: 12px 20px;
+                border: vars.$gt-exit-btn-border;
+                border-radius: 10px;
+                cursor: pointer;
+                gap: 10px;
+
+                &:hover {
+                    background-color: vars.$gt-exit-btn-hover-bg;
+                    outline: vars.$gt-exit-btn-hover-border;
+                    box-shadow: vars.$gt-exit-btn-hover-shadow;
+
+                    & img {
+                        filter: vars.$gt-exit-btn-hover-img-color;
+                    }
                 }
             }
         }
