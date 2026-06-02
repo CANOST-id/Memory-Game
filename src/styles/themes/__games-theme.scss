@@ -2,7 +2,7 @@
 @use '../abstract/variables' as vars;
 
 body.games-theme {
-    background-color: vars.$game-theme-bg;
+    background-color: vars.$gt-bg;
 
     & .game > header {
         @include mixin.flex(row, space-between, center);
@@ -245,7 +245,7 @@ body.games-theme {
         font-size: 28px;
         line-height: 40px;
         letter-spacing: 2%;
-        background-color: vars.$game-theme-dialog-bg;
+        background-color: vars.$gt-dialog-bg;
         padding: 40px;
         gap: 40px;
 
