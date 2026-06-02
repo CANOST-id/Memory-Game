@@ -1,4 +1,5 @@
 @use '../abstract/mixin' as mixin;
+@use '../abstract/variables' as var;
 
 body {
     overflow: hidden;
@@ -37,27 +38,25 @@ body {
         background-color: #F0EA6E;
         @include mixin.flex-center;
         gap: 20px;
+        transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
 
         & svg:first-child {
             width: 50px;
-        }
-
-        & svg:last-child {
-            width: 35px;
+            transform: rotate(0deg);
+            transform-origin: center;
+            transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         &:hover {
             transform: scale(1.02);
-            transition: transform 0.2s ease-out;
 
             & svg:first-child {
-                transition: transform 0.1s ease-out;
                 transform: rotate(-30deg);
             }
 
-            & svg:last-child {
-                transition: transform 0.1s ease-out;
-                transform: scale(1.3);
+            & .arrow {
+                width: 36px;
+                content: url(./src/assets/icons/thick-arrow.svg);
             }
         }
     }
@@ -68,7 +67,7 @@ body {
     left: -40px;
     bottom: 70px;
     transform: rotate(37deg);
-    opacity: 5%;
+    opacity: 0.05;
 
     &__svg {
         width: 380px;
