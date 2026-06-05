@@ -67,3 +67,10 @@ $gt-card-back-bg: linear-gradient(225deg, $gt-pink, $gt-dark-blue);
 $gt-card-shadow: 6px 6px 12px 0px rgba(0, 0, 0, 0.25);
 $gt-card-state-border: 3px solid #ED1B76;
 $gt-card-state-shadow: 5px 5px 8px 0px #ED1B764D;
+
+
+// breakpoints for responsive design
+$bp-xl: 1200px;
+$bp-lg: 950px;
+$bp-md: 768px;
+$bp-sm: 576px;
