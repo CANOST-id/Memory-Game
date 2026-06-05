@@ -1,0 +1,148 @@
+@use "../abstract/breakpoint.mixin" as bp;
+
+@include bp.down(xl) {
+	.opening {
+		gap: 28px;
+
+		&__text {
+			& h1 {
+				font-size: 110px;
+			}
+
+			& h2 {
+				font-size: 40px;
+			}
+		}
+
+		&__button--align {
+			font-size: 34px;
+			padding: 20px;
+			gap: 16px;
+
+			& svg:first-child {
+				width: 44px;
+			}
+
+			&:hover .arrow {
+				width: 32px;
+			}
+		}
+	}
+
+	.controller-image {
+		left: -56px;
+		bottom: 42px;
+
+		&__svg {
+			width: 320px;
+		}
+	}
+}
+
+@include bp.down(lg) {
+	.opening {
+		&__text {
+			& h1 {
+				font-size: 84px;
+			}
+
+			& h2 {
+				font-size: 32px;
+			}
+		}
+
+		&__button--align {
+			font-size: 30px;
+			padding: 18px;
+		}
+	}
+
+	.controller-image {
+		&__svg {
+			width: 260px;
+		}
+	}
+}
+
+@include bp.down(md) {
+	body {
+		overflow-x: hidden;
+	}
+
+	.opening {
+		padding: 0 20px;
+		gap: 18px;
+
+		&__text {
+			width: 100%;
+			align-items: center;
+			text-align: center;
+
+			& h1 {
+				font-size: 62px;
+				line-height: 0.95;
+			}
+
+			& h2 {
+				font-size: 24px;
+			}
+		}
+
+		&__button--align {
+			width: min(100%, 360px);
+			justify-content: center;
+			font-size: 24px;
+			padding: 16px;
+			gap: 12px;
+
+			& svg:first-child {
+				width: 36px;
+			}
+		}
+	}
+
+	.controller-image {
+		left: 50%;
+		bottom: 12px;
+		transform: translateX(-50%) rotate(22deg);
+
+		&__svg {
+			width: 220px;
+		}
+	}
+}
+
+@include bp.down(sm) {
+	.opening {
+		&__text {
+			& h1 {
+				font-size: 48px;
+			}
+
+			& h2 {
+				font-size: 20px;
+			}
+		}
+
+		&__button--align {
+			font-size: 20px;
+			padding: 14px;
+
+			& svg:first-child {
+				width: 30px;
+			}
+
+			& .arrow {
+				width: 22px;
+			}
+		}
+	}
+
+	.controller-image {
+		opacity: 0.04;
+
+		&__svg {
+			width: 180px;
+		}
+	}
+}
