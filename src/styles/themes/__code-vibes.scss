@@ -113,49 +113,50 @@ body.code-vibes {
             }
         }
 
-        & .game-over {
-            font-family: Red-Rose-Bold;
+    }
 
-            // display none for games theme standings
-            & .standings__player .--gt-standings {
-                display: none;
-            }
+    & .game-over {
+        font-family: Red-Rose-Bold;
 
-            & .standings {
-                font-size: 20px;
-                background-color: vars.$cv-standings-bg;
-                padding: 17px 20px;
-                gap: 20px;
+        // display none for games theme standings
+        & .standings__player .--gt-standings {
+            display: none;
+        }
 
-                &__player {
+        & .standings {
+            font-size: 20px;
+            background-color: vars.$cv-standings-bg;
+            padding: 17px 20px;
+            gap: 20px;
+
+            &__player {
+                gap: 4px;
+
+                & .--cv-standings {
+                    @include mixin.flex(row, center, center);
                     gap: 4px;
+                }
 
-                    & .--cv-standings {
-                        @include mixin.flex(row, center, center);
-                        gap: 4px;
-                    }
+                & .--blue {
+                    color: vars.$cv-blue;
+                }
 
-                    & .--blue {
-                        color: vars.$cv-blue;
-                    }
+                & .--orange {
+                    color: vars.$cv-orange;
+                }
 
-                    & .--orange {
-                        color: vars.$cv-orange;
-                    }
+                & .--label {
+                    background-color: currentColor;
+                    display: inline-block;
+                    width: 24px;
+                    height: 20px;
+                    border-radius: 4px;
 
-                    & .--label {
-                        background-color: currentColor;
-                        display: inline-block;
-                        width: 24px;
-                        height: 20px;
-                        border-radius: 4px;
-
-                        clip-path: polygon(0 0,
-                                calc(100% - 8px) 0,
-                                100% 50%,
-                                calc(100% - 8px) 100%,
-                                0 100%);
-                    }
+                    clip-path: polygon(0 0,
+                            calc(100% - 8px) 0,
+                            100% 50%,
+                            calc(100% - 8px) 100%,
+                            0 100%);
                 }
             }
         }
@@ -164,6 +165,49 @@ body.code-vibes {
     & .game-end {
         color: white;
         font-family: Red-Rose-Bold;
+
+        // display none for games theme standings
+        & .standings__player .--gt-standings {
+            display: none;
+        }
+
+        & .standings {
+            font-size: 20px;
+            background-color: vars.$cv-standings-bg;
+            padding: 17px 20px;
+            gap: 20px;
+
+            &__player {
+                gap: 4px;
+
+                & .--cv-standings {
+                    @include mixin.flex(row, center, center);
+                    gap: 4px;
+                }
+
+                & .--blue {
+                    color: vars.$cv-blue;
+                }
+
+                & .--orange {
+                    color: vars.$cv-orange;
+                }
+
+                & .--label {
+                    background-color: currentColor;
+                    display: inline-block;
+                    width: 24px;
+                    height: 20px;
+                    border-radius: 4px;
+
+                    clip-path: polygon(0 0,
+                            calc(100% - 8px) 0,
+                            100% 50%,
+                            calc(100% - 8px) 100%,
+                            0 100%);
+                }
+            }
+        }
 
         & .winner-wrapper {
             gap: 24px;
