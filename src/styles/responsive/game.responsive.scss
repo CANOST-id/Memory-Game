@@ -1,0 +1,149 @@
+@use "../abstract/breakpoint.mixin" as bp;
+
+body:has(dialog.show-dialog),
+body:has(dialog[open]) {
+    overflow: hidden !important;
+}
+
+dialog {
+    position: fixed;
+    inset: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    z-index: 1000;
+}
+
+@media (max-width: 1520px) {
+    .game {
+        width: 90%;
+    }
+}
+
+@media (max-width: 1350px) {
+
+    body.code-vibes .dialog-inner,
+    body.games-theme .dialog-inner {
+        width: 50%;
+    }
+}
+
+@include bp.down(xl) {
+    .game {
+        width: 94%;
+        gap: 36px;
+        margin-top: 24px;
+    }
+
+    .game>header {
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px 20px;
+    }
+}
+
+@include bp.down(lg) {
+    body {
+        overflow: auto;
+    }
+
+    .game {
+        width: 96%;
+        gap: 28px;
+        margin-top: 16px;
+    }
+
+    .game>header {
+        flex-direction: column;
+        justify-content: center;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .game>header #exit-game {
+        align-self: center;
+    }
+
+    .game>header .standings {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px !important;
+    }
+
+    .game>header .standings__player {
+        flex: 1 1 220px;
+    }
+
+    .game>header .current-player {
+        justify-content: center;
+    }
+
+    .game__table {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 10px auto;
+    }
+}
+
+@media (max-width: 873px) {
+
+    body.code-vibes .game>header .standings,
+    body.games-theme .game>header .standings {
+        font-size: 18px;
+    }
+
+    body.games-theme .game>header .standings__player .--gt-standings {
+        font-size: 24px;
+    }
+
+    body.code-vibes .game>header .current-player,
+    body.games-theme .game>header .current-player {
+        font-size: 24px;
+    }
+
+    body.code-vibes .game>header button,
+    body.games-theme .game>header button {
+        font-size: 18px;
+        padding: 10px 16px;
+    }
+
+    body.code-vibes .dialog-inner,
+    body.games-theme .dialog-inner {
+        width: 60%;
+    }
+}
+
+@media (max-width: 721px) {
+
+    body.code-vibes .dialog-inner,
+    body.games-theme .dialog-inner {
+        width: min(88%, 520px);
+        padding: 20px 16px;
+        gap: 16px;
+        font-size: clamp(16px, 3.8vw, 22px);
+        line-height: 1.25;
+    }
+
+    body.code-vibes .dialog-inner h2,
+    body.games-theme .dialog-inner h2 {
+        font-size: 30px;
+        line-height: 1.25;
+    }
+
+    body.code-vibes .dialog-inner .--btn__wrapper,
+    body.games-theme .dialog-inner .--btn__wrapper {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+
+    body.code-vibes .dialog-inner .--btn__wrapper button,
+    body.games-theme .dialog-inner .--btn__wrapper button {
+        width: 100%;
+    }
+}
