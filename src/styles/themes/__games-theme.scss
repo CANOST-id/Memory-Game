@@ -150,6 +150,37 @@ body.games-theme {
         color: white;
         font-family: Orbitron;
 
+        // display none for code vibes standings
+        & .standings__player .--cv-standings {
+            display: none;
+        }
+
+        & .standings {
+            @include mixin.flex(row, center, center);
+            background-color: white;
+            border-radius: 10px;
+            gap: 40px;
+            padding: 0 16px;
+
+            &__player {
+
+                & .--gt-standings {
+                    @include mixin.flex(row, center, center);
+                    font-size: 30px;
+                    height: 52px;
+                    gap: 8px;
+                }
+
+                & .--orange {
+                    color: vars.$gt-orange;
+                }
+
+                & .--blue {
+                    color: vars.$gt-blue;
+                }
+            }
+        }
+
         & .winner-wrapper {
             gap: 24px;
 
