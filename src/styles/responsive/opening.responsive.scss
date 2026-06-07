@@ -102,23 +102,13 @@
 	}
 
 	.controller-image {
-		left: 50%;
-		bottom: 12px;
-		transform: translateX(-50%) rotate(22deg);
-
-		&__svg {
-			width: 220px;
-		}
+		bottom: 50px;
 	}
 }
 
 @include bp.down(sm) {
 	.opening {
 		&__text {
-			& h1 {
-				font-size: 48px;
-			}
-
 			& h2 {
 				font-size: 20px;
 			}
@@ -135,14 +125,6 @@
 			& .arrow {
 				width: 22px;
 			}
-		}
-	}
-
-	.controller-image {
-		opacity: 0.04;
-
-		&__svg {
-			width: 180px;
 		}
 	}
 }
