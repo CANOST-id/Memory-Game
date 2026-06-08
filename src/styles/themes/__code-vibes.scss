@@ -29,7 +29,6 @@ body.code-vibes {
 
                     & .--cv-standings {
                         @include mixin.flex(row, center, center);
-
                         gap: 4px;
                     }
 
@@ -47,7 +46,6 @@ body.code-vibes {
                         width: 24px;
                         height: 20px;
                         border-radius: 4px;
-
                         clip-path: polygon(0 0,
                                 calc(100% - 8px) 0,
                                 100% 50%,
@@ -151,7 +149,6 @@ body.code-vibes {
                     width: 24px;
                     height: 20px;
                     border-radius: 4px;
-
                     clip-path: polygon(0 0,
                             calc(100% - 8px) 0,
                             100% 50%,

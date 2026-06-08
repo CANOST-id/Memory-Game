@@ -1,13 +1,27 @@
 @use "./variables" as vars;
 
 @mixin down($point) {
-@if $point == xl {
-@media (max-width: vars.$bp-xl) { @content; }
-} @else if $point == lg {
-@media (max-width: vars.$bp-lg) { @content; }
-} @else if $point == md {
-@media (max-width: vars.$bp-md) { @content; }
-} @else if $point == sm {
-@media (max-width: vars.$bp-sm) { @content; }
-}
+    @if $point ==xl {
+        @media (max-width: vars.$bp-xl) {
+            @content;
+        }
+    }
+
+    @else if $point ==lg {
+        @media (max-width: vars.$bp-lg) {
+            @content;
+        }
+    }
+
+    @else if $point ==md {
+        @media (max-width: vars.$bp-md) {
+            @content;
+        }
+    }
+
+    @else if $point ==sm {
+        @media (max-width: vars.$bp-sm) {
+            @content;
+        }
+    }
 }
