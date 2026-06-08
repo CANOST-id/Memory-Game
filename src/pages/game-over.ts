@@ -9,6 +9,7 @@ function displayFinalScore(result: GameResult): void {
     updateScoreElements('Orange', result.orangeScore);
 }
 
+// update score elements
 function updateScoreElements(player: PlayerColor, score: number) {
     const colorClass = player === 'Orange' ? '--orange' : '--blue';
     const cvScore = document.querySelector(`.game-over__theme--code-vibes .--cv-standings.${colorClass} .--score`) as HTMLElement | null;

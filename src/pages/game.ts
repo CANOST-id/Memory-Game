@@ -130,6 +130,7 @@ function createGameState(size: number, startPlayer: string): GameState {
     };
 }
 
+// update score elements
 function updateScoreElements(player: PlayerColor, score: number) {
     const colorClass = player === 'Orange' ? '--orange' : '--blue';
     const cvScore = document.querySelector(`.standings .--cv-standings.${colorClass} .--score`) as HTMLElement | null;
@@ -155,6 +156,7 @@ function resolveWinner(state: GameState): Winner {
     return 'Draw';
 }
 
+// build the game result object based on the final game state
 function buildGameResult(state: GameState): GameResult {
     return {
         winner: resolveWinner(state),
@@ -163,7 +165,8 @@ function buildGameResult(state: GameState): GameResult {
     };
 }
 
-function persistGameResult(state: GameState) {
+// safe game result to local storage
+function safeGameResult(state: GameState) {
     const result = buildGameResult(state);
     localStorage.setItem('gameResult', JSON.stringify(result));
 }
@@ -224,7 +227,7 @@ function handleMatch(state: GameState, cards: [HTMLElement, HTMLElement], player
     addPoint(state, player);
     state.matchedPairs += 1;
     if (state.matchedPairs === state.totalPairs) {
-        persistGameResult(state);
+        safeGameResult(state);
         window.setTimeout(() => {
             gameOver();
         }, 2000);
@@ -272,6 +275,7 @@ function finishTurn(state: GameState, switchPlayer: boolean) {
     }
 }
 
+// get specific indicator variant
 function getIndicatorVariant(): string {
     const isGamesTheme = document.body.classList.contains('games-theme');
     return isGamesTheme ? 'indicator--pawn' : 'indicator--label';
