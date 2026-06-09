@@ -5,86 +5,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="icon" type="image/png" href="%BASE_URL%assets/icons/favicon-memory.svg">
+    <link rel="icon" type="image/png" href="assets/icons/favicon-memory.svg">
 
     <title>Memory Settings</title>
 </head>
 
 <body>
     <section class="settings">
-        <section class="title">
+
+        <header>
             <h1>Settings</h1>
             <svg xmlns="http://www.w3.org/2000/svg" width="263" height="24" viewBox="0 0 263 24" fill="none">
                 <path
                     d="M-0.000152588 11.547L11.5469 23.094L23.0939 11.547L11.5469 -8.58307e-06L-0.000152588 11.547ZM262.547 11.547V9.547L11.5469 9.547V11.547V13.547L262.547 13.547V11.547Z" />
             </svg>
-        </section>
+        </header>
 
         <section class="settings-content">
 
             <div class="settings-menu">
 
-                <div class="theme-options">
-                    <div class="title__wrapper">
-                        <img src="%BASE_URL%assets/icons/palette.png" alt="palette icon">
+                <fieldset>
+                    <legend>
+                        <img src="assets/icons/palette.png" alt="palette icon">
                         <h2>Game themes</h2>
-                    </div>
+                    </legend>
+                    <ul>
+                        <li>
+                            <input type="radio" name="theme" value="Code vibes theme" id="code-vibes">
+                            <label for="code-vibes">Code vibes theme</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="theme" value="Gaming theme" id="gaming">
+                            <label for="gaming">Gaming theme</label>
+                        </li>
+                    </ul>
+                </fieldset>
 
-                    <div>
-                        <input type="radio" name="theme" value="Code vibes theme" id="code-vibes">
-                        <label for="code-vibes">Code vibes theme</label>
-                    </div>
-
-                    <div>
-                        <input type="radio" name="theme" value="Gaming theme" id="gaming">
-                        <label for="gaming">Gaming theme</label>
-                    </div>
-                </div>
-
-                <div class="choose-player">
-                    <div class="title__wrapper">
-                        <img src="%BASE_URL%assets/icons/chess_pawn.png" alt="chess pawn icon">
+                <fieldset>
+                    <legend class="title__wrapper">
+                        <img src="assets/icons/chess_pawn.png" alt="chess pawn icon">
                         <h2>Choose player</h2>
-                    </div>
+                    </legend>
+                    <ul>
+                        <li>
+                            <input type="radio" name="player" value="Orange" id="orange">
+                            <label for="orange">Orange</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="player" value="Blue" id="blue">
+                            <label for="blue">Blue</label>
+                        </li>
+                    </ul>
+                </fieldset>
 
-                    <div>
-                        <input type="radio" name="player" value="Orange" id="orange">
-                        <label for="orange">Orange</label>
-                    </div>
-
-                    <div>
-                        <input type="radio" name="player" value="Blue" id="blue">
-                        <label for="blue">Blue</label>
-
-                    </div>
-                </div>
-
-                <div class="board-size">
-                    <div class="title__wrapper">
-                        <img src="%BASE_URL%assets/icons/style.png" alt="style icon">
+                <fieldset>
+                    <legend class="title__wrapper">
+                        <img src="assets/icons/style.png" alt="style icon">
                         <h2>Board size</h2>
-                    </div>
-
-                    <div>
-                        <input type="radio" name="board-size" value="16 Cards" id="16-cards" data-size="16">
-                        <label for="16-cards">16 Cards</label>
-                    </div>
-
-                    <div>
-                        <input type="radio" name="board-size" value="24 Cards" id="24-cards" data-size="24">
-                        <label for="24-cards">24 Cards</label>
-                    </div>
-
-                    <div>
-                        <input type="radio" name="board-size" value="36 Cards" id="36-cards" data-size="36">
-                        <label for="36-cards">36 Cards</label>
-                    </div>
-                </div>
+                    </legend>
+                    <ul>
+                        <li>
+                            <input type="radio" name="board-size" value="16 Cards" id="16-cards" data-size="16">
+                            <label for="16-cards">16 Cards</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="board-size" value="24 Cards" id="24-cards" data-size="24">
+                            <label for="24-cards">24 Cards</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="board-size" value="36 Cards" id="36-cards" data-size="36">
+                            <label for="36-cards">36 Cards</label>
+                        </li>
+                    </ul>
+                </fieldset>
             </div>
 
             <div class="settings-preview">
 
-                <img id="theme_image" class="settings-preview__image" src="%BASE_URL%assets/images/code-vibes-img.png"
+                <img id="theme_image" src="assets/images/code-vibes-img.png"
                     alt="code vibes theme preview - default image">
 
                 <div class="settings-preview__box">
@@ -98,8 +97,8 @@
 
                     </div>
 
-                    <button id="start-game" class="start__button">
-                        <img src="%BASE_URL%assets/icons/play_icon.png" alt="play icon">
+                    <button id="start-game">
+                        <img src="assets/icons/play_icon.png" alt="play icon">
                         Start
                     </button>
                 </div>
