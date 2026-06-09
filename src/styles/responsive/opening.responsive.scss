@@ -4,7 +4,7 @@
 	.opening {
 		gap: 28px;
 
-		&__text {
+		& header {
 			& h1 {
 				font-size: 110px;
 			}
@@ -14,9 +14,8 @@
 			}
 		}
 
-		&__button--align {
+		& button {
 			font-size: 34px;
-			padding: 20px;
 			gap: 16px;
 
 			& svg:first-child {
@@ -30,30 +29,18 @@
 	}
 
 	.controller-image {
-		left: -56px;
-		bottom: 42px;
-
-		&__svg {
-			width: 320px;
-		}
+		width: 320px;
 	}
 }
 
 @include bp.down(lg) {
-	.opening {
-		&__text {
-			& h1 {
-				font-size: 84px;
-			}
-
-			& h2 {
-				font-size: 32px;
-			}
+	header {
+		& h1 {
+			font-size: 84px;
 		}
 
-		&__button--align {
-			font-size: 30px;
-			padding: 18px;
+		& h2 {
+			font-size: 32px;
 		}
 	}
 
@@ -65,56 +52,47 @@
 }
 
 @include bp.down(md) {
-	body {
-		overflow-x: hidden;
-	}
-
 	.opening {
-		padding: 0 20px;
-		gap: 18px;
-
-		&__text {
-			width: 100%;
-			align-items: center;
-			text-align: center;
-
+		& header {
 			& h1 {
-				font-size: 62px;
-				line-height: 0.95;
+				font-size: 80px;
 			}
 
 			& h2 {
-				font-size: 24px;
+				font-size: 28px;
 			}
 		}
 
-		&__button--align {
-			width: min(100%, 360px);
-			justify-content: center;
-			font-size: 24px;
-			padding: 16px;
-			gap: 12px;
+		button {
+			font-size: 28px;
+			padding: 18px;
 
 			& svg:first-child {
-				width: 36px;
+				width: 38px;
+			}
+
+			&:hover .arrow {
+				width: 28px;
 			}
 		}
-	}
-
-	.controller-image {
-		bottom: 50px;
 	}
 }
 
 @include bp.down(sm) {
 	.opening {
-		&__text {
+		gap: 20px;
+
+		header {
+			& h1 {
+				font-size: 40px;
+			}
+
 			& h2 {
 				font-size: 20px;
 			}
 		}
 
-		&__button--align {
+		& button {
 			font-size: 20px;
 			padding: 14px;
 
@@ -126,5 +104,9 @@
 				width: 22px;
 			}
 		}
+	}
+
+	.controller-image {
+		width: 260px;
 	}
 }

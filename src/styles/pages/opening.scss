@@ -1,20 +1,17 @@
 @use '../abstract/mixin' as mixin;
 @use '../abstract/variables' as var;
 
-body {
-    overflow: hidden;
-}
-
 .opening {
+    @include mixin.flex-column();
     width: 100%;
     height: 100vh;
     background-color: rgb(47, 49, 49);
-    @include mixin.flex-column;
     gap: 40px;
 
-    &__text {
+    & header {
+        @include mixin.flex-column(column-reverse, center, flex-start);
         color: white;
-        @include mixin.flex-column(column-reverse, center, start);
+        width: auto;
 
         & h1 {
             font-family: Red-Rose-Bold;
@@ -28,7 +25,7 @@ body {
         }
     }
 
-    &__button--align {
+    & button {
         color: #303131;
         font-size: 40px;
         font-family: Red-Rose-Bold;
@@ -65,12 +62,9 @@ body {
 .controller-image {
     position: absolute;
     left: -40px;
-    bottom: 70px;
+    bottom: 90px;
     transform: rotate(37deg);
     opacity: 0.05;
-
-    &__svg {
-        width: 380px;
-        color: #F0EA6E;
-    }
+    width: 380px;
+    color: #F0EA6E;
 }
