@@ -1,6 +1,9 @@
 import { cardImages } from '../services/cards';
 import { gameOver } from '../services/navigation';
 
+const assetPath = (path: string): string =>
+    import.meta.env.BASE_URL + path.replace(/^\/+/, '');
+
 interface Settings {
     theme: string;
     player: string;
@@ -296,7 +299,7 @@ function cardTemplate(theme: string, imgSrc: string): string {
     return `
         <div class="card__inner">
             <div class="card__back">
-                <img src="/src/assets/cards/${theme}/da-logo.png" alt="">
+                <img src="${assetPath(`assets/cards/${theme}/da-logo.png`)}" alt="">
             </div>
             <div class="card__front">
                 <img src="${imgSrc}" alt="card image">

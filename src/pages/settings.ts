@@ -5,6 +5,9 @@ export interface Settings {
     boardSize: number | string;
 }
 
+const assetPath = (path: string): string =>
+    import.meta.env.BASE_URL + path.replace(/^\/+/, '');
+
 let activeButton = false;
 
 // check if page is loaded to handle start button state when user navigates back to the settings page from the game page
@@ -61,11 +64,11 @@ function switchPreviewImage() {
     let themeRef = document.querySelector('input[name="theme"]:checked') as HTMLInputElement;
     const themeImage = document.getElementById('theme_image') as HTMLImageElement;
     if (themeRef.value === 'Code vibes theme') {
-        themeImage.src = './src/assets/images/code-vibes-img.png';
+        themeImage.src = assetPath('assets/images/code-vibes-img.png');
         themeImage.alt = 'code vibes theme preview';
     }
     if (themeRef.value === 'Gaming theme') {
-        themeImage.src = './src/assets/images/gaming-theme-img.png';
+        themeImage.src = assetPath('assets/images/gaming-theme-img.png');
         themeImage.alt = 'gaming theme preview';
     }
 }
