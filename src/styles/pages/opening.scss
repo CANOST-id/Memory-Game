@@ -56,7 +56,7 @@ body {
 
             & .arrow {
                 width: 36px;
-                content: url(./src/assets/icons/thick-arrow.svg);
+                content: var(--asset-thick-arrow);
             }
         }
     }

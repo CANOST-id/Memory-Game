@@ -239,11 +239,11 @@ body.code-vibes {
 
         & .winner-icon--pawn {
             background-color: currentColor;
-            -webkit-mask-image: url('/src/assets/images/chess-pawn-end.png');
+            -webkit-mask-image: var(--asset-chess-pawn-end);
             -webkit-mask-repeat: no-repeat;
             -webkit-mask-position: center;
             -webkit-mask-size: contain;
-            mask-image: url('/src/assets/images/chess-pawn-end.png');
+            mask-image: var(--asset-chess-pawn-end);
             mask-repeat: no-repeat;
             mask-position: center;
             mask-size: contain;
