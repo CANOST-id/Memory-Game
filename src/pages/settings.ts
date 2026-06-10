@@ -1,12 +1,5 @@
 import { startGame } from '../services/navigation';
-export interface Settings {
-    theme: string;
-    player: string;
-    boardSize: number | string;
-}
-
-const assetPath = (path: string): string =>
-    import.meta.env.BASE_URL + path.replace(/^\/+/, '');
+import { Settings } from '../services/interfaces';
 
 let activeButton = false;
 
@@ -64,11 +57,11 @@ function switchPreviewImage() {
     let themeRef = document.querySelector('input[name="theme"]:checked') as HTMLInputElement;
     const themeImage = document.getElementById('theme_image') as HTMLImageElement;
     if (themeRef.value === 'Code vibes theme') {
-        themeImage.src = assetPath('assets/images/code-vibes-img.png');
+        themeImage.src = 'assets/images/code-vibes-img.png';
         themeImage.alt = 'code vibes theme preview';
     }
     if (themeRef.value === 'Gaming theme') {
-        themeImage.src = assetPath('assets/images/gaming-theme-img.png');
+        themeImage.src = 'assets/images/gaming-theme-img.png';
         themeImage.alt = 'gaming theme preview';
     }
 }

@@ -1,7 +1,4 @@
-const assetPath = (path: string): string =>
-    import.meta.env.BASE_URL + path.replace(/^\/+/, '');
-
-const rawCardImages: Record<string, string[]> = {
+export const cardImages = {
     'code-vibes': [
         'assets/cards/code-vibes/angular.png',
         'assets/cards/code-vibes/bootstrap.png',
@@ -43,10 +40,3 @@ const rawCardImages: Record<string, string[]> = {
         'assets/cards/games-theme/joystick.png'
     ]
 };
-
-export const cardImages: Record<string, string[]> = Object.fromEntries(
-    Object.entries(rawCardImages).map(([theme, images]) => [
-        theme,
-        images.map(assetPath)
-    ])
-) as Record<string, string[]>;

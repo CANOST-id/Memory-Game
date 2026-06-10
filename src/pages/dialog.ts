@@ -1,5 +1,4 @@
-import { isCodeVibesTheme } from '../components/code-vibes';
-import { isGamesTheme } from '../components/games-theme';
+import { isCodeVibesTheme, isGamesTheme } from '../components/theme';
 import { quitGame } from '../services/navigation';
 
 const dialog = document.querySelector('dialog') as HTMLElement | null;

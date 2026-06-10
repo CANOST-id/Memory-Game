@@ -1,7 +1,7 @@
 import { gameEnd } from '../services/navigation';
-import { applyTheme, loadGameSettings, loadResultFromStorage, type GameResult } from '../services/game-result';
-
-type PlayerColor = 'Orange' | 'Blue';
+import { loadGameSettings, loadResultFromStorage } from '../services/game-result';
+import { PlayerColor, GameResult } from '../services/interfaces';
+import { applyTheme } from '../components/theme';
 
 // show the final score
 function displayFinalScore(result: GameResult): void {

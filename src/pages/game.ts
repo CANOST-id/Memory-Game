@@ -1,44 +1,14 @@
 import { cardImages } from '../services/cards';
 import { gameOver } from '../services/navigation';
-
-const assetPath = (path: string): string =>
-    import.meta.env.BASE_URL + path.replace(/^\/+/, '');
-
-interface Settings {
-    theme: string;
-    player: string;
-    boardSize: number | string;
-}
-
-type PlayerColor = 'Orange' | 'Blue';
-type Winner = PlayerColor | 'Draw';
-
-interface CardModel {
-    id: number;
-    pairIndex: number;
-    imgSrc: string;
-}
-
-interface GameState {
-    openCards: HTMLElement[];
-    lockBoard: boolean;
-    currentPlayer: PlayerColor;
-    matchedPairs: number;
-    totalPairs: number;
-    orangeScore: number;
-    blueScore: number;
-}
-
-interface GameResult {
-    winner: Winner;
-    orangeScore: number;
-    blueScore: number;
-}
-
-interface TurnHooks {
-    onMatch: (cards: [HTMLElement, HTMLElement], player: PlayerColor) => void;
-    onMismatch: (cards: [HTMLElement, HTMLElement]) => void;
-}
+import { cardTemplate } from '../services/templates';
+import {
+    Settings,
+    CardModel,
+    GameState,
+    GameResult,
+    Winner,
+    PlayerColor,
+    TurnHooks } from '../services/interfaces';
 
 // Initialize the game when the page is loaded
 if (document.querySelector('.game')) {
@@ -92,7 +62,7 @@ function nextPlayer(player: PlayerColor): PlayerColor {
 }
 
 // get theme images based on selscted theme and the number of cards
-function getThemeImages(theme: string, pairCount: number): string[] {
+function getThemeImages(theme: string, pairCount: number, cardImages: Record<string, string[]>): string[] {
     const images = cardImages[theme] || [];
     if (images.length < pairCount) {
         throw new Error(`Not enough card images for theme "${theme}". Needed: ${pairCount}, available: ${images.length}`);
@@ -116,7 +86,7 @@ function shuffleDeck(deck: CardModel[]): CardModel[] {
 // create indexed pairs of cards
 function createIndexedPairs(theme: string, boardSize: number): CardModel[] {
     const pairCount = boardSize / 2;
-    const images = getThemeImages(theme, pairCount);
+    const images = getThemeImages(theme, pairCount, cardImages);
     return shuffleDeck(buildPairs(images));
 }
 
@@ -292,18 +262,4 @@ function renderCurrentPlayer(player: PlayerColor) {
     indicator.className = 'current-player__indicator';
     indicator.classList.add(getIndicatorVariant());
     indicator.classList.add(player === 'Orange' ? 'is-orange' : 'is-blue');
-}
-
-// template for cards
-function cardTemplate(theme: string, imgSrc: string): string {
-    return `
-        <div class="card__inner">
-            <div class="card__back">
-                <img src="${assetPath(`assets/cards/${theme}/da-logo.png`)}" alt="">
-            </div>
-            <div class="card__front">
-                <img src="${imgSrc}" alt="card image">
-            </div>
-        </div>
-    `;
 }

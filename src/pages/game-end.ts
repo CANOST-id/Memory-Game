@@ -1,7 +1,6 @@
-import { applyTheme, loadGameSettings, loadResultFromStorage, type GameResult } from '../services/game-result';
-
-type Winner = GameResult['winner'];
-const WINNER_CLASSES = ['is-orange', 'is-blue', 'is-draw'];
+import { loadGameSettings, loadResultFromStorage } from '../services/game-result';
+import { GameResult, Winner } from '../services/interfaces';
+import { applyTheme } from '../components/theme';
 
 //  get the label for the winner
 function getWinnerLabel(winner: Winner): string {
@@ -24,7 +23,7 @@ function getStatusText(isDraw: boolean): string {
 
 // add or remove classes for winner and draw states
 function setElementClass(element: HTMLElement, winnerClass: string) {
-	element.classList.remove(...WINNER_CLASSES);
+	element.classList.remove('is-orange', 'is-blue', 'is-draw');
 	element.classList.add(winnerClass);
 }
 

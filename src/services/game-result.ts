@@ -1,12 +1,4 @@
-export interface GameResult {
-    winner: 'Orange' | 'Blue' | 'Draw';
-    orangeScore: number;
-    blueScore: number;
-}
-
-export interface Settings {
-    theme: string;
-}
+import { Settings, GameResult } from './interfaces';
 
 // load game settings from local storage
 export function loadGameSettings(): Settings | null {
@@ -18,18 +10,6 @@ export function loadGameSettings(): Settings | null {
     } catch {
         return null;
     }
-}
-
-// apply the selected theme
-export function applyTheme(theme: string) {
-    const themeMap: Record<string, string> = {
-        'Code vibes theme': 'code-vibes',
-        'Gaming theme': 'games-theme'
-    };
-
-    Object.values(themeMap).forEach(cls => document.body.classList.remove(cls));
-    const themeClass = themeMap[theme];
-    if (themeClass) document.body.classList.add(themeClass);
 }
 
 // load game result from local storage 
