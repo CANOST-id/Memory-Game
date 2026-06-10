@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="icon" type="image/png" href="%BASE_URL%assets/icons/favicon-memory.svg">
+
+    <link rel="icon" type="image/png" href="assets/icons/favicon-memory.svg">
 
     <title>Game Over</title>
 </head>
@@ -14,40 +14,43 @@
 
     <section class="game-over">
 
-        <div class="game-over__theme game-over__theme--code-vibes">
-            <img class="game-over__logo" src="%BASE_URL%assets/images/game-over-logo.png" alt="Game Over logo">
+        <!-- code vibes theme -->
+        <main class="game-over__theme game-over__theme--code-vibes">
+            <img class="game-over__logo" src="assets/images/game-over-logo.png" alt="Game Over logo">
 
             <div class="score-wrapper">
                 <span class="score">Final score</span>
 
                 <section class="standings">
-                    <div class="standings__player">
+
+                    <aside class="standings__player">
                         <div class="--cv-standings --blue">
                             <div class="--label"></div>
                             <p>Blue</p>
                             <div class="--score">0</div>
                         </div>
-                    </div>
+                    </aside>
 
-                    <div class="standings__player">
+                    <aside class="standings__player">
                         <div class="--cv-standings --orange">
                             <div class="--label"></div>
                             <p>Orange</p>
                             <div class="--score">0</div>
                         </div>
-                    </div>
+                    </aside>
                 </section>
             </div>
-        </div>
+        </main>
 
-        <div class="game-over__theme game-over__theme--games-theme">
+        <!-- games theme -->
+        <main class="game-over__theme game-over__theme--games-theme">
             <h1>GAME OVER</h1>
 
             <div class="score-wrapper">
                 <span class="score">Final score</span>
 
                 <section class="standings">
-                    <div class="standings__player">
+                    <aside class="standings__player">
                         <div class="--gt-standings --orange">
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="28" viewBox="0 0 10 12"
                                 fill="none">
@@ -57,9 +60,9 @@
                             </svg>
                             <p>0</p>
                         </div>
-                    </div>
+                    </aside>
 
-                    <div class="standings__player">
+                    <aside class="standings__player">
                         <div class="--gt-standings --blue">
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="28" viewBox="0 0 10 12"
                                 fill="none">
@@ -69,10 +72,10 @@
                             </svg>
                             <p>0</p>
                         </div>
-                    </div>
+                    </aside>
                 </section>
             </div>
-        </div>
+        </main>
     </section>
 
     <script type="module" src="/src/main.ts"></script>
