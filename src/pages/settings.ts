@@ -1,5 +1,6 @@
 import { startGame } from '../services/navigation';
 import { Settings } from '../services/interfaces';
+import { saveSettings } from '../services/local-storage';
 
 let activeButton = false;
 
@@ -8,7 +9,7 @@ window.addEventListener('pageshow', updateStartButtonState);
 
 // check if DOM is loaded before initializing the settings page
 document.addEventListener('DOMContentLoaded', () => {
-    const allRadioButtons = document.querySelectorAll('input[type="radio"]');
+    let allRadioButtons = document.querySelectorAll('input[type="radio"]');
     allRadioButtons.forEach(radio => {
         radio.addEventListener('change', () => {
             updatePreview(getCurrentSettings());
@@ -19,9 +20,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // get current settings from the DOM and return them as an object
 export function getCurrentSettings(): Settings {
-    const themeRef = document.querySelector('input[name="theme"]:checked') as HTMLInputElement;
-    const playerRef = document.querySelector('input[name="player"]:checked') as HTMLInputElement;
-    const boardSizeRef = document.querySelector('input[name="board-size"]:checked') as HTMLInputElement;
+    let themeRef = document.querySelector('input[name="theme"]:checked') as HTMLInputElement;
+    let playerRef = document.querySelector('input[name="player"]:checked') as HTMLInputElement;
+    let boardSizeRef = document.querySelector('input[name="board-size"]:checked') as HTMLInputElement;
 
     return {
         theme: themeRef?.value || 'Game theme',
@@ -32,7 +33,7 @@ export function getCurrentSettings(): Settings {
 
 // update the preview section in the settings page with the current settings
 function updatePreview(settings: Settings) {
-    const settingsValues = getCurrentSettings();
+    let settingsValues = getCurrentSettings();
 
     let themePreview = document.getElementById('choosen_theme');
     let playerPreview = document.getElementById('choosen_player');
@@ -46,7 +47,7 @@ function updatePreview(settings: Settings) {
 // change the preview image in the settings page based on the selected theme
 function changeThemeImage() {
     switchPreviewImage();
-    const settingsValues = getCurrentSettings();
+    let settingsValues = getCurrentSettings();
     let themePreview = document.getElementById('choosen_theme');
 
     if (themePreview) themePreview.textContent = `${settingsValues.theme}`;
@@ -55,7 +56,7 @@ function changeThemeImage() {
 // switch the preview image
 function switchPreviewImage() {
     let themeRef = document.querySelector('input[name="theme"]:checked') as HTMLInputElement;
-    const themeImage = document.getElementById('theme_image') as HTMLImageElement;
+    let themeImage = document.getElementById('theme_image') as HTMLImageElement;
     if (themeRef.value === 'Code vibes theme') {
         themeImage.src = 'assets/images/code-vibes-img.png';
         themeImage.alt = 'code vibes theme preview';
@@ -68,11 +69,11 @@ function switchPreviewImage() {
 
 // update the state of start button - required function
 function updateStartButtonState() {
-    const startButton = document.getElementById('start-game') as HTMLButtonElement;
-    const themeSelected = document.querySelector('input[name="theme"]:checked') as HTMLInputElement;
-    const playerSelected = document.querySelector('input[name="player"]:checked') as HTMLInputElement;
-    const boardSizeSelected = document.querySelector('input[name="board-size"]:checked') as HTMLInputElement;
-    const allSelected = themeSelected && playerSelected && boardSizeSelected;
+    let startButton = document.getElementById('start-game') as HTMLButtonElement;
+    let themeSelected = document.querySelector('input[name="theme"]:checked') as HTMLInputElement;
+    let playerSelected = document.querySelector('input[name="player"]:checked') as HTMLInputElement;
+    let boardSizeSelected = document.querySelector('input[name="board-size"]:checked') as HTMLInputElement;
+    let allSelected = themeSelected && playerSelected && boardSizeSelected;
     if (startButton) {
         startButton.disabled = !allSelected;
     } if (allSelected) {
@@ -81,12 +82,6 @@ function updateStartButtonState() {
     } else {
         activeButton = false;
     }
-}
-
-// save the current settings to localStorage for later use in the game page
-function saveSettings() {
-    const settingsValues = getCurrentSettings();
-    localStorage.setItem('settings', JSON.stringify(settingsValues));
 }
 
 // event listiner for the start game button

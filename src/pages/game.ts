@@ -1,8 +1,7 @@
-import { cardImages } from '../services/cards';
+import { cardImages, cardTemplate } from '../services/cards';
 import { gameOver } from '../services/navigation';
-import { cardTemplate } from '../services/templates';
+import { loadGameSettings, safeGameResult } from '../services/local-storage';
 import {
-    Settings,
     CardModel,
     GameState,
     GameResult,
@@ -21,26 +20,19 @@ if (document.querySelector('.game')) {
 
 // Initialize the game by loading settings, applying theme, creating the game board, and 
 function initGame() {
-    const settings = loadGameSettings();
-    const themeClass = applyTheme(settings.theme);
+    let settings = loadGameSettings();
+    let themeClass = applyTheme(settings.theme);
     createGameBoard(settings.boardSize, themeClass, settings.player);
 }
 
-// laod game settings from local storage
-function loadGameSettings(): Settings {
-    const savedSettings = localStorage.getItem('settings');
-    if (savedSettings) return JSON.parse(savedSettings);
-    return { theme: '', player: '', boardSize: '' };
-}
-
 // apply the selected theme 
-function applyTheme(theme: string) {
-    const themeMap: Record<string, string> = {
+export function applyTheme(theme: string) {
+    let themeMap: Record<string, string> = {
         'Code vibes theme': 'code-vibes',
         'Gaming theme': 'games-theme'
     };
 
-    const themeClass = themeMap[theme];
+    let themeClass = themeMap[theme];
     Object.values(themeMap).forEach(cls => document.body.classList.remove(cls));
     if (themeClass) document.body.classList.add(themeClass);
     return themeClass;
@@ -63,7 +55,7 @@ function nextPlayer(player: PlayerColor): PlayerColor {
 
 // get theme images based on selscted theme and the number of cards
 function getThemeImages(theme: string, pairCount: number, cardImages: Record<string, string[]>): string[] {
-    const images = cardImages[theme] || [];
+    let images = cardImages[theme] || [];
     if (images.length < pairCount) {
         throw new Error(`Not enough card images for theme "${theme}". Needed: ${pairCount}, available: ${images.length}`);
     }
@@ -85,8 +77,8 @@ function shuffleDeck(deck: CardModel[]): CardModel[] {
 
 // create indexed pairs of cards
 function createIndexedPairs(theme: string, boardSize: number): CardModel[] {
-    const pairCount = boardSize / 2;
-    const images = getThemeImages(theme, pairCount, cardImages);
+    let pairCount = boardSize / 2;
+    let images = getThemeImages(theme, pairCount, cardImages);
     return shuffleDeck(buildPairs(images));
 }
 
@@ -105,9 +97,9 @@ function createGameState(size: number, startPlayer: string): GameState {
 
 // update score elements
 function updateScoreElements(player: PlayerColor, score: number) {
-    const colorClass = player === 'Orange' ? '--orange' : '--blue';
-    const cvScore = document.querySelector(`.standings .--cv-standings.${colorClass} .--score`) as HTMLElement | null;
-    const gtScore = document.querySelector(`.standings .--gt-standings.${colorClass} p`) as HTMLElement | null;
+    let colorClass = player === 'Orange' ? '--orange' : '--blue';
+    let cvScore = document.querySelector(`.standings .--cv-standings.${colorClass} .--score`) as HTMLElement | null;
+    let gtScore = document.querySelector(`.standings .--gt-standings.${colorClass} p`) as HTMLElement | null;
     if (cvScore) cvScore.textContent = String(score);
     if (gtScore) gtScore.textContent = String(score);
 }
@@ -130,7 +122,7 @@ function resolveWinner(state: GameState): Winner {
 }
 
 // build the game result object based on the final game state
-function buildGameResult(state: GameState): GameResult {
+export function buildGameResult(state: GameState): GameResult {
     return {
         winner: resolveWinner(state),
         orangeScore: state.orangeScore,
@@ -138,15 +130,9 @@ function buildGameResult(state: GameState): GameResult {
     };
 }
 
-// safe game result to local storage
-function safeGameResult(state: GameState) {
-    const result = buildGameResult(state);
-    localStorage.setItem('gameResult', JSON.stringify(result));
-}
-
 // create a card element 
 function createCardElement(cardData: CardModel, theme: string, state: GameState): HTMLElement {
-    const card = document.createElement('div');
+    let card = document.createElement('div');
     card.classList.add('card');
     card.dataset['pairIndex'] = String(cardData.pairIndex);
     card.dataset['cardId'] = String(cardData.id);
@@ -162,12 +148,12 @@ function renderDeck(table: HTMLElement, deck: CardModel[], theme: string, state:
 
 // create game board 
 function createGameBoard(boardSize: number | string, theme: string, startPlayerFromSettings: string) {
-    const table = document.querySelector('.game__table') as HTMLElement | null;
+    let table = document.querySelector('.game__table') as HTMLElement | null;
     if (!table) return;
     table.innerHTML = '';
-    const size = normalizeBoardSize(boardSize);
+    let size = normalizeBoardSize(boardSize);
     table.dataset['size'] = String(size);
-    const state = createGameState(size, startPlayerFromSettings);
+    let state = createGameState(size, startPlayerFromSettings);
     renderCurrentPlayer(state.currentPlayer);
     renderStandings(state);
     renderDeck(table, createIndexedPairs(theme, size), theme, state);
@@ -218,8 +204,8 @@ function handleMismatch(state: GameState, cards: [HTMLElement, HTMLElement]) {
 
 // handle card state - if two cards are opened and if they match or not
 function resolveOpenCards(state: GameState, hooks: TurnHooks) {
-    const [first, second] = state.openCards as [HTMLElement, HTMLElement];
-    const samePair = first.dataset['pairIndex'] === second.dataset['pairIndex'];
+    let [first, second] = state.openCards as [HTMLElement, HTMLElement];
+    let samePair = first.dataset['pairIndex'] === second.dataset['pairIndex'];
     if (samePair) {
         hooks.onMatch([first, second], state.currentPlayer);
         return;
@@ -229,7 +215,7 @@ function resolveOpenCards(state: GameState, hooks: TurnHooks) {
 
 // mark cards as matched and add player specific class for matched
 function markCardsAsMatched(cards: [HTMLElement, HTMLElement], player: PlayerColor) {
-    const playerClass = player === 'Orange' ? 'card--matched-orange' : 'card--matched-blue';
+    let playerClass = player === 'Orange' ? 'card--matched-orange' : 'card--matched-blue';
 
     cards.forEach(card => {
         card.classList.add('card--matched');
@@ -250,13 +236,13 @@ function finishTurn(state: GameState, switchPlayer: boolean) {
 
 // get specific indicator variant
 function getIndicatorVariant(): string {
-    const isGamesTheme = document.body.classList.contains('games-theme');
+    let isGamesTheme = document.body.classList.contains('games-theme');
     return isGamesTheme ? 'indicator--pawn' : 'indicator--label';
 }
 
 // render the current player indicator
 function renderCurrentPlayer(player: PlayerColor) {
-    const indicator = document.querySelector('.current-player__indicator') as HTMLElement | null;
+    let indicator = document.querySelector('.current-player__indicator') as HTMLElement | null;
     if (!indicator) return;
 
     indicator.className = 'current-player__indicator';
