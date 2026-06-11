@@ -4,10 +4,11 @@ import { saveSettings } from '../services/local-storage';
 
 let activeButton = false;
 
-// check if page is loaded to handle start button state when user navigates back to the settings page from the game page
+/** Check if page is loaded to handle start button state - if user navigates back to the settings page from the game page */
 window.addEventListener('pageshow', updateStartButtonState);
 
-// check if DOM is loaded before initializing the settings page
+/** Check if DOM is loaded to add event listeners to all radio buttons on the settings page
+ */
 document.addEventListener('DOMContentLoaded', () => {
     let allRadioButtons = document.querySelectorAll('input[type="radio"]');
     allRadioButtons.forEach(radio => {
@@ -18,7 +19,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// get current settings from the DOM and return them as an object
+/**
+ * Reads the currently selected settings from the radio buttons.
+ * @returns The current {@link Settings} based on the selected radio buttons.
+ */
 export function getCurrentSettings(): Settings {
     let themeRef = document.querySelector('input[name="theme"]:checked') as HTMLInputElement;
     let playerRef = document.querySelector('input[name="player"]:checked') as HTMLInputElement;
@@ -31,7 +35,10 @@ export function getCurrentSettings(): Settings {
     }
 }
 
-// update the preview section in the settings page with the current settings
+/**
+ * Updates preview settings based on current selection.
+ * @param settings   {@link Settings} to display.
+ */
 function updatePreview(settings: Settings) {
     let settingsValues = getCurrentSettings();
 
@@ -44,7 +51,9 @@ function updatePreview(settings: Settings) {
     if (boardSizePreview) boardSizePreview.textContent = `${settingsValues.boardSize}`;
 }
 
-// change the preview image in the settings page based on the selected theme
+/**
+ * Updates the theme preview image and text based on selected theme.
+ */
 function changeThemeImage() {
     switchPreviewImage();
     let settingsValues = getCurrentSettings();
@@ -53,7 +62,9 @@ function changeThemeImage() {
     if (themePreview) themePreview.textContent = `${settingsValues.theme}`;
 }
 
-// switch the preview image
+/**
+ * Set the `src` and `alt` attributes of the preview image based on the currently selected theme.
+ */
 function switchPreviewImage() {
     let themeRef = document.querySelector('input[name="theme"]:checked') as HTMLInputElement;
     let themeImage = document.getElementById('theme_image') as HTMLImageElement;
@@ -67,7 +78,10 @@ function switchPreviewImage() {
     }
 }
 
-// update the state of start button - required function
+/**
+ * Enable or disalbe the start button - if all settings options are selected.
+ * Options - Theme, Player and Board Size
+ */
 function updateStartButtonState() {
     let startButton = document.getElementById('start-game') as HTMLButtonElement;
     let themeSelected = document.querySelector('input[name="theme"]:checked') as HTMLInputElement;
@@ -84,7 +98,7 @@ function updateStartButtonState() {
     }
 }
 
-// event listiner for the start game button
+/** Starts game, if all settings are selected - otherwise prevents navigation. */
 document.getElementById('start-game')?.addEventListener('click', (event) => {
     if (activeButton === true) {
         saveSettings();

@@ -7,18 +7,29 @@ let backToGameButton = document.getElementById('back-to-game');
 let exitGameDialogButton = document.getElementById('exit-game-dialog');
 let ANIMATION_DURATION_MS = 320;
 
-// dialog open/close functions with animation handling
+/**
+ * Opens the dialog by removing any closing animation classes and adding the show class.
+ * @param dialogElement - The dialog element to open.
+ */
 function openDialog(dialogElement: HTMLElement): void {
     dialogElement.classList.remove('is-closing-up', 'is-closing-down', 'is-closing-fade');
     dialogElement.classList.add('show-dialog');
 }
 
-// remove all closing classes and hide dialog after animation
+/**
+ * Removes the show class.
+ * @param dialogElement - The dialog element to finish closing.
+ */
 function finishClose(dialogElement: HTMLElement): void {
     dialogElement.classList.remove('show-dialog', 'is-closing-up', 'is-closing-down', 'is-closing-fade');
 }
 
-// close dialog with specific animation based on mode
+/**
+ * Closes the dialog by adding current theme closing animation class and removing the show class after the animation duration.
+ * @param dialogElement - The dialog element.
+ * @param mode - The current theme animation mode.
+ * @returns void - The function does not return a value.
+ */
 function closeDialog(dialogElement: HTMLElement, mode: 'up' | 'down' | 'fade'): void {
     if (!dialogElement.classList.contains('show-dialog')) return;
     if (dialogElement.classList.contains('is-closing-up') || dialogElement.classList.contains('is-closing-down') || dialogElement.classList.contains('is-closing-fade')) return;
@@ -30,7 +41,10 @@ function closeDialog(dialogElement: HTMLElement, mode: 'up' | 'down' | 'fade'): 
     window.setTimeout(() => finishClose(dialogElement), ANIMATION_DURATION_MS);
 }
 
-// check current theme to handle close animation direction
+/**
+ *  The closing animation class based on the current theme.
+ * @returns 'up' or 'down' - The closing animation mode.
+ */
 function getBackdropCloseMode(): 'up' | 'down' {
     if (document.body.classList.contains('code-vibes'))
         return 'up';
@@ -39,7 +53,14 @@ function getBackdropCloseMode(): 'up' | 'down' {
     return 'up';
 }
 
-// initialize dialog event listeners if all elements are present
+/**
+ * Eventlistiners for open and close dialog
+ * - Open dialog when open button is clicked.
+ * - Close dialog with animation when back to game button is clicked.
+ * - Close dialog with animation when clicking outside the dialog inner content.
+ * - Stop propagation of click events on the dialog inner content to prevent closing the dialog when clicking inside it.
+ * - Quit game and navigate to settings page when exit game button in dialog is clicked.
+ */
 if (dialog && dialogInner && openButton && backToGameButton && exitGameDialogButton) {
     openButton.addEventListener('click', () => {
         openDialog(dialog);

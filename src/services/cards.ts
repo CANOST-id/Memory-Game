@@ -41,6 +41,12 @@ export const cardImages = {
     ]
 };
 
+/**
+ * Card template with the specified theme and image source.
+ * @param theme - The current theme of the card.
+ * @param imgSrc - The source URL of the image displayed on the card.
+ * @returns An HTML string representing the card.
+ */
 export function cardTemplate(theme: string, imgSrc: string): string {
     return `
         <div class="card__inner">

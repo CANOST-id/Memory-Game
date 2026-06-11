@@ -1,54 +1,87 @@
 import { loadGameSettings, loadResultFromStorage } from '../services/local-storage';
 import { GameResult, Winner } from '../services/interfaces';
 import { applyTheme } from '../pages/game';
+import { goToHome } from '../services/navigation';
 
-//  get the label for the winner
+/**
+ * Gets the label for the winner.
+ * @param winner - The {@link Winner} of the game.
+ * @returns The label of the winner or "Draw" if it's a draw.
+ */
 function getWinnerLabel(winner: Winner): string {
 	if (winner === 'Orange') return 'Orange player';
 	if (winner === 'Blue') return 'Blue player';
 	return 'Draw';
 }
 
-// get the color/class for the winner
+/**
+ * Gets the CSS class for the winner or draw state.
+ * @param winner the {@link Winner} of the game.
+ * @returns The CSS class to the winner or draw state.
+ */
 function getWinnerClass(winner: Winner): string {
 	if (winner === 'Orange') return 'is-orange';
 	if (winner === 'Blue') return 'is-blue';
 	return 'is-draw';
 }
 
-// get status text based on winner or draw
+/**
+ * Gets the status text based on whether it's a draw or not.
+ * @param isDraw 
+ * @returns 
+ */
 function getStatusText(isDraw: boolean): string {
 	return isDraw ? 'Its a' : 'The winner is';
 }
 
-// add or remove classes for winner and draw states
+/**
+ * Sets the CSS class for an element based on the winner or draw state.
+ * @param element - The HTML element to update.
+ * @param winnerClass - The CSS class of the winner or draw state to apply.
+ */
 function setElementClass(element: HTMLElement, winnerClass: string) {
 	element.classList.remove('is-orange', 'is-blue', 'is-draw');
 	element.classList.add(winnerClass);
 }
 
-// set text content for all elements matching the selector
+/**
+ * Sets the text content for all elements matching the selector
+ * @param selector - The CSS selector to identify the elements to update.
+ * @param text - The text content to set for the matched elements.
+ */
 function setTextForAll(selector: string, text: string) {
 	document.querySelectorAll(selector).forEach(element => {
 		(element as HTMLElement).textContent = text;
 	});
 }
 
-// set classes for all elements matching the selector
+/**
+ * Sets CSS classses for all matched elements based on state of the game end.
+ * @param selector - The CSS selector to identify the elements to update.
+ * @param winnerClass - The CSS class of the winner or draw state to apply.
+ */
 function setClassForAll(selector: string, winnerClass: string) {
 	document.querySelectorAll(selector).forEach(element => {
 		setElementClass(element as HTMLElement, winnerClass);
 	});
 }
 
-// set class for a single element matching the selector
+/**
+ * Sets the CSS class for a element based the state of the game end.
+ * @param selector - The CSS selector to identify the element to update.
+ * @param winnerClass - The CSS class of the winner or draw state to apply.
+ * @returns - The HTML element that was updated or undefined if no element was found.
+ */
 function setClassForOne(selector: string, winnerClass: string) {
 	let element = document.querySelector(selector) as HTMLElement | null;
 	if (!element) return;
 	setElementClass(element, winnerClass);
 }
 
-// set game theme design 
+/**
+ * Sets the theme state for all theme elements.
+ * @param isDraw - A comparison if the game ended in a draw or with a winner.
+ */
 function setThemeState(isDraw: boolean) {
 	document.querySelectorAll('.game-end__theme').forEach(element => {
 		let themeRef = element as HTMLElement;
@@ -57,12 +90,20 @@ function setThemeState(isDraw: boolean) {
 	});
 }
 
+/**
+ * Applies the text and CSS class for the winner.
+ * @param winner The {@link Winner} of the game.
+ * @param winnerClass The CSS class of the winner.
+ */
 function applyWinnerText(winner: Winner, winnerClass: string) {
 	setTextForAll('.winner', getWinnerLabel(winner));
 	setClassForAll('.winner', winnerClass);
 }
 
-// apply visuals based on winner or draw state and theme
+/**
+ * Applies the visuals for the winner or draw state by updating CSS classes.
+ * @param winnerClass The CSS class of the winner or draw state to apply.
+ */
 function applyWinnerVisuals(winnerClass: string) {
 	setClassForOne('.winner-icon--pawn', winnerClass);
 	setClassForAll('.draw-image', winnerClass);
@@ -70,7 +111,10 @@ function applyWinnerVisuals(winnerClass: string) {
 	setClassForOne('.draw-logo', winnerClass);
 }
 
-// render current winner 
+/**
+ * Displays the winner.
+ * @param result The final {@link GameResult} of the game, containing the winner and scores.
+ */ 
 function renderWinner(result: GameResult) {
 	let isDraw = result.winner === 'Draw';
 	let winnerClass = getWinnerClass(result.winner);
@@ -80,18 +124,18 @@ function renderWinner(result: GameResult) {
 	applyWinnerVisuals(winnerClass);
 }
 
-// back to home page
-function goToHome() {
-	window.location.href = 'index.html';
-}
-
-// bind click events for buttons
+/**
+ * Binds the click event listiners for the buttons on the game end page.
+ */
 function bindButtons() {
 	document.getElementById('back-to-start')?.addEventListener('click', goToHome);
 	document.getElementById('home')?.addEventListener('click', goToHome);
 }
 
-// initialize the game end page by loading settings, rendering winner, and binding buttons
+/**
+ * Sets up the game and renders the winner based on the saved game result.
+ * Binds the buttons on the page.
+ */
 function initGameEndPage() {
 	let settings = loadGameSettings();
 	if (settings?.theme) applyTheme(settings.theme);
@@ -102,7 +146,9 @@ function initGameEndPage() {
 	bindButtons();
 }
 
-// check if game-end page is loaded and initialize it
+/**
+ * Checks if the current page is game-end page and initializes the page.
+ */
 if (document.querySelector('.game-end')) {
 	initGameEndPage();
 }

@@ -3,13 +3,20 @@ import { loadGameSettings, loadResultFromStorage } from '../services/local-stora
 import { PlayerColor, GameResult } from '../services/interfaces';
 import { applyTheme } from '../pages/game';
 
-// show the final score
+/**
+ * Displays the final score on the game-over page.
+ * @param result - The final game result.
+ */
 function displayFinalScore(result: GameResult): void {
     updateScoreElements('Blue', result.blueScore);
     updateScoreElements('Orange', result.orangeScore);
 }
 
-// update score elements
+/**
+ * Updates the score element for the current player.
+ * @param player - The current {@link PlayerColor} Player.
+ * @param score - The current score of the player.
+ */
 function updateScoreElements(player: PlayerColor, score: number) {
     let colorClass = player === 'Orange' ? '--orange' : '--blue';
     let cvScore = document.querySelector(`.game-over__theme--code-vibes .--cv-standings.${colorClass} .--score`) as HTMLElement | null;
@@ -19,7 +26,9 @@ function updateScoreElements(player: PlayerColor, score: number) {
     if (gtScore) gtScore.textContent = String(score);
 }
 
-// check if game-over page is loaded and display the score
+/**
+ * Checks if the current page is game-over page and displays the final score.
+ */
 if (document.querySelector('.game-over')) {
     let settings = loadGameSettings();
     if (settings?.theme) applyTheme(settings.theme);
