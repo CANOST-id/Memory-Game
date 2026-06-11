@@ -1,12 +1,11 @@
-import { isCodeVibesTheme, isGamesTheme } from '../components/theme';
 import { quitGame } from '../services/navigation';
 
-const dialog = document.querySelector('dialog') as HTMLElement | null;
-const dialogInner = document.getElementById('dialog_inner') as HTMLElement | null;
-const openButton = document.getElementById('exit-game');
-const backToGameButton = document.getElementById('back-to-game');
-const exitGameDialogButton = document.getElementById('exit-game-dialog');
-const ANIMATION_DURATION_MS = 320;
+let dialog = document.querySelector('dialog') as HTMLElement | null;
+let dialogInner = document.getElementById('dialog_inner') as HTMLElement | null;
+let openButton = document.getElementById('exit-game');
+let backToGameButton = document.getElementById('back-to-game');
+let exitGameDialogButton = document.getElementById('exit-game-dialog');
+let ANIMATION_DURATION_MS = 320;
 
 // dialog open/close functions with animation handling
 function openDialog(dialogElement: HTMLElement): void {
@@ -33,8 +32,10 @@ function closeDialog(dialogElement: HTMLElement, mode: 'up' | 'down' | 'fade'): 
 
 // check current theme to handle close animation direction
 function getBackdropCloseMode(): 'up' | 'down' {
-    if (isGamesTheme()) return 'down';
-    if (isCodeVibesTheme()) return 'up';
+    if (document.body.classList.contains('code-vibes'))
+        return 'up';
+    if (document.body.classList.contains('games-theme'))
+        return 'down';
     return 'up';
 }
 
