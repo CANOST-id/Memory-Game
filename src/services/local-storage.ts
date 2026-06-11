@@ -3,13 +3,13 @@ import { Settings, GameResult, GameState } from './interfaces';
 import { buildGameResult } from '../pages/game';
 
 export function saveSettings() {
-    const settingsValues = getCurrentSettings();
+    let settingsValues = getCurrentSettings();
     localStorage.setItem('settings', JSON.stringify(settingsValues));
 }
 
 // load game result from local storage 
 export function loadResultFromStorage(): GameResult | null {
-    const rawResult = localStorage.getItem('gameResult');
+    let rawResult = localStorage.getItem('gameResult');
     if (!rawResult) return null;
 
     try {

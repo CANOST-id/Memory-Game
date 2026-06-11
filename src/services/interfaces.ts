@@ -13,7 +13,6 @@ export interface CardModel {
     imgSrc: string;
 }
 
-
 export interface GameState {
     openCards: HTMLElement[];
     lockBoard: boolean;
