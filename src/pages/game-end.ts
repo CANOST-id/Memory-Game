@@ -1,6 +1,6 @@
-import { loadGameSettings, loadResultFromStorage } from '../services/game-result';
+import { loadGameSettings, loadResultFromStorage } from '../services/local-storage';
 import { GameResult, Winner } from '../services/interfaces';
-import { applyTheme } from '../components/theme';
+import { applyTheme } from '../pages/game';
 
 //  get the label for the winner
 function getWinnerLabel(winner: Winner): string {
@@ -43,7 +43,7 @@ function setClassForAll(selector: string, winnerClass: string) {
 
 // set class for a single element matching the selector
 function setClassForOne(selector: string, winnerClass: string) {
-	const element = document.querySelector(selector) as HTMLElement | null;
+	let element = document.querySelector(selector) as HTMLElement | null;
 	if (!element) return;
 	setElementClass(element, winnerClass);
 }
@@ -51,7 +51,7 @@ function setClassForOne(selector: string, winnerClass: string) {
 // set game theme design 
 function setThemeState(isDraw: boolean) {
 	document.querySelectorAll('.game-end__theme').forEach(element => {
-		const themeRef = element as HTMLElement;
+		let themeRef = element as HTMLElement;
 		themeRef.classList.remove('state--draw', 'state--winner');
 		themeRef.classList.add(isDraw ? 'state--draw' : 'state--winner');
 	});
@@ -72,8 +72,8 @@ function applyWinnerVisuals(winnerClass: string) {
 
 // render current winner 
 function renderWinner(result: GameResult) {
-	const isDraw = result.winner === 'Draw';
-	const winnerClass = getWinnerClass(result.winner);
+	let isDraw = result.winner === 'Draw';
+	let winnerClass = getWinnerClass(result.winner);
 	setTextForAll('.status-text', getStatusText(isDraw));
 	setThemeState(isDraw);
 	applyWinnerText(result.winner, winnerClass);
@@ -93,10 +93,10 @@ function bindButtons() {
 
 // initialize the game end page by loading settings, rendering winner, and binding buttons
 function initGameEndPage() {
-	const settings = loadGameSettings();
+	let settings = loadGameSettings();
 	if (settings?.theme) applyTheme(settings.theme);
 
-	const result = loadResultFromStorage();
+	let result = loadResultFromStorage();
 	if (result) renderWinner(result);
 
 	bindButtons();
