@@ -234,6 +234,7 @@
 
 .enabled {
     background-color: vars.$primary-yellow !important;
+    cursor: pointer;
 
     & img {
         transition: transform 0.18s ease;
