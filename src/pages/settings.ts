@@ -41,41 +41,13 @@ export function getCurrentSettings(): Settings {
  */
 function updatePreview(settings: Settings) {
     let settingsValues = getCurrentSettings();
-
-    let themePreview = document.getElementById('choosen_theme');
     let playerPreview = document.getElementById('choosen_player');
     let boardSizePreview = document.getElementById('choosen_board_size');
-
-    if (themePreview) changeThemeImage();
+    let themePreview = document.getElementById('choosen_theme');
+    
+    if (themePreview) themePreview.textContent = `${settingsValues.theme}`;
     if (playerPreview) playerPreview.textContent = `${settingsValues.player}`;
     if (boardSizePreview) boardSizePreview.textContent = `${settingsValues.boardSize}`;
-}
-
-/**
- * Updates the theme preview image and text based on selected theme.
- */
-function changeThemeImage() {
-    switchPreviewImage();
-    let settingsValues = getCurrentSettings();
-    let themePreview = document.getElementById('choosen_theme');
-
-    if (themePreview) themePreview.textContent = `${settingsValues.theme}`;
-}
-
-/**
- * Set the `src` and `alt` attributes of the preview image based on the currently selected theme.
- */
-function switchPreviewImage() {
-    let themeRef = document.querySelector('input[name="theme"]:checked') as HTMLInputElement;
-    let themeImage = document.getElementById('theme_image') as HTMLImageElement;
-    if (themeRef.value === 'Code vibes theme') {
-        themeImage.src = 'assets/images/code-vibes-img.png';
-        themeImage.alt = 'code vibes theme preview';
-    }
-    if (themeRef.value === 'Gaming theme') {
-        themeImage.src = 'assets/images/gaming-theme-img.png';
-        themeImage.alt = 'gaming theme preview';
-    }
 }
 
 /**
